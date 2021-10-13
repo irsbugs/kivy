@@ -1,0 +1,477 @@
+https://github.com/Genymobile/scrcpy
+
+3. Scrcpy
+
+Scrcpy is a free open-source alternative to all the best screen mirroring software that requires users to shell out loads of money.
+
+The best part is you don’t have to install any application here, but only Android ADB tools. Scrcpy supports both, USB and Wireless Android screen mirroring and supports Windows, macOS and Linux. Due to Scrcpy’s low size, the tool offers an extremely low latency rate, therefore, making it the fastest screen mirroring app.
+
+However, the biggest problem with Scrcpy is that it is a little difficult to set up, particularly for users who have no technical knowledge of Terminal, ADB tools, Command-Line, etc. Still, Scrcpy is one of the best screen mirroring apps thanks to its simplicity and low latency rate.
+
+
+Prerequisites for installing Scrcpy
+
+Android ADB Tools
+USB Debugging turned on your Android device
+How to view phone screen on PC via USB using Scrcpy (Windows)?
+Download the Scrcpy latest package and extract the zip file.
+Connect the device to your PC via USB cable.
+Allow USB Debugging confirmation on your phone.
+Run the application “Scrcpy”
+How to cast Android screen to laptop using Wi-Fi using Scrcpy (Windows)?
+In order to cast Android screen on a PC wirelessly, follow the previous steps and install Scrcpy, then simply enable the wireless connection on ADB. Also, make sure your PC and Android device are on the same wireless network.
+
+Connect your device to your PC and allow USB debugging confirmation.
+Enter the command “adb devices” to confirm the connection.
+Now, enter the command “adb tcpip 5555” to enable WiFi Debug mode.
+Remove the USB cable.
+Enter the command “adb connect <device IP address>”
+You can locate your Android device’s IP address in Settings — About phone — IP address.
+Enter the command “scrcpy”
+MacOS users can find the steps to install the Android mirroring tool here.
+
+Scrcpy Price – Free
+
+=====
+https://github.com/Genymobile/scrcpy
+
+ian@ian:~$ apt search scrcpy
+Sorting... Done
+Full Text Search... Done
+scrcpy/focal 1.12.1+ds-1 amd64
+  Display and control your Android device
+
+scrcpy-server/focal,focal 1.12.1+ds-1 all
+  Display and control your Android device - server binary
+
+ian@ian:~$ 
+
+
+=====
+
+adb/focal 1:8.1.0+r23-5ubuntu2 amd64
+  Android Debug Bridge
+
+android-libadb/focal 1:8.1.0+r23-5ubuntu2 amd64
+  Library for Android Debug Bridge
+
+android-libadb-dev/focal 1:8.1.0+r23-5ubuntu2 amd64
+  Library for Android Debug Bridge - Development files
+
+android-sdk-platform-tools-common/focal,focal 27.0.0+12 all
+  Tools for interacting with an Android platform - Common files
+
+android-tools-adb/focal,focal 1:8.1.0+r23-5ubuntu2 all
+  transitional package
+
+
+====
+
+On phone settings --> system --> developer options -->  USB Debugging ON
+
+ian@ian:~$ sudo apt install scrcpy
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  adb android-libadb android-libbase android-libboringssl
+  android-libcrypto-utils android-libcutils android-liblog
+  android-sdk-platform-tools-common scrcpy-server
+The following NEW packages will be installed:
+  adb android-libadb android-libbase android-libboringssl
+  android-libcrypto-utils android-libcutils android-liblog
+  android-sdk-platform-tools-common scrcpy scrcpy-server
+0 upgraded, 10 newly installed, 0 to remove and 0 not upgraded.
+Need to get 907 kB of archives.
+After this operation, 2,812 kB of additional disk space will be used.
+Do you want to continue? [Y/n] 
+
+Get:1 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-liblog amd64 1:8.1.0+r23-5ubuntu2 [41.9 kB]
+Get:2 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-libbase amd64 1:8.1.0+r23-5ubuntu2 [22.4 kB]
+Get:3 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-libboringssl amd64 8.1.0+r23-2build1 [538 kB]
+Get:4 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-libcrypto-utils amd64 1:8.1.0+r23-5ubuntu2 [8,324 B]
+Get:5 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-libcutils amd64 1:8.1.0+r23-5ubuntu2 [22.5 kB]
+Get:6 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-libadb amd64 1:8.1.0+r23-5ubuntu2 [123 kB]
+Get:7 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 adb amd64 1:8.1.0+r23-5ubuntu2 [87.6 kB]
+Get:8 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 android-sdk-platform-tools-common all 27.0.0+12 [6,648 B]
+Get:9 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 scrcpy-server all 1.12.1+ds-1 [27.0 kB]
+Get:10 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 scrcpy amd64 1.12.1+ds-1 [29.4 kB]
+Fetched 907 kB in 0s (5,264 kB/s)   
+Selecting previously unselected package android-liblog.
+(Reading database ... 328804 files and directories currently installed.)
+Preparing to unpack .../0-android-liblog_1%3a8.1.0+r23-5ubuntu2_amd64.deb ...
+Unpacking android-liblog (1:8.1.0+r23-5ubuntu2) ...
+Selecting previously unselected package android-libbase.
+Preparing to unpack .../1-android-libbase_1%3a8.1.0+r23-5ubuntu2_amd64.deb ...
+Unpacking android-libbase (1:8.1.0+r23-5ubuntu2) ...
+Selecting previously unselected package android-libboringssl.
+Preparing to unpack .../2-android-libboringssl_8.1.0+r23-2build1_amd64.deb ...
+Unpacking android-libboringssl (8.1.0+r23-2build1) ...
+Selecting previously unselected package android-libcrypto-utils.
+Preparing to unpack .../3-android-libcrypto-utils_1%3a8.1.0+r23-5ubuntu2_amd64.d
+eb ...
+Unpacking android-libcrypto-utils (1:8.1.0+r23-5ubuntu2) ...
+Selecting previously unselected package android-libcutils.
+Preparing to unpack .../4-android-libcutils_1%3a8.1.0+r23-5ubuntu2_amd64.deb ...
+Unpacking android-libcutils (1:8.1.0+r23-5ubuntu2) ...
+Selecting previously unselected package android-libadb.
+Preparing to unpack .../5-android-libadb_1%3a8.1.0+r23-5ubuntu2_amd64.deb ...
+Unpacking android-libadb (1:8.1.0+r23-5ubuntu2) ...
+Selecting previously unselected package adb.
+Preparing to unpack .../6-adb_1%3a8.1.0+r23-5ubuntu2_amd64.deb ...
+Unpacking adb (1:8.1.0+r23-5ubuntu2) ...
+Selecting previously unselected package android-sdk-platform-tools-common.
+Preparing to unpack .../7-android-sdk-platform-tools-common_27.0.0+12_all.deb ..
+.
+Unpacking android-sdk-platform-tools-common (27.0.0+12) ...
+Selecting previously unselected package scrcpy-server.
+Preparing to unpack .../8-scrcpy-server_1.12.1+ds-1_all.deb ...
+Unpacking scrcpy-server (1.12.1+ds-1) ...
+Selecting previously unselected package scrcpy.
+Preparing to unpack .../9-scrcpy_1.12.1+ds-1_amd64.deb ...
+Unpacking scrcpy (1.12.1+ds-1) ...
+Setting up scrcpy-server (1.12.1+ds-1) ...
+Setting up android-sdk-platform-tools-common (27.0.0+12) ...
+Setting up android-liblog (1:8.1.0+r23-5ubuntu2) ...
+Setting up scrcpy (1.12.1+ds-1) ...
+Setting up android-libboringssl (8.1.0+r23-2build1) ...
+Setting up android-libcrypto-utils (1:8.1.0+r23-5ubuntu2) ...
+Setting up android-libbase (1:8.1.0+r23-5ubuntu2) ...
+Setting up android-libcutils (1:8.1.0+r23-5ubuntu2) ...
+Setting up android-libadb (1:8.1.0+r23-5ubuntu2) ...
+Setting up adb (1:8.1.0+r23-5ubuntu2) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+ian@ian:~$ 
+
+
+=====
+
+ian@ian:~$ scrcpy --help
+Usage: scrcpy [options]
+
+Options:
+
+    --always-on-top
+        Make scrcpy window always on top (above other windows).
+
+    -b, --bit-rate value
+        Encode the video at the given bit-rate, expressed in bits/s.
+        Unit suffixes are supported: 'K' (x1000) and 'M' (x1000000).
+        Default is 8000000.
+
+    --crop width:height:x:y
+        Crop the device screen on the server.
+        The values are expressed in the device natural orientation
+        (typically, portrait for a phone, landscape for a tablet).
+        Any --max-size value is computed on the cropped size.
+
+    -f, --fullscreen
+        Start in fullscreen.
+
+    -h, --help
+        Print this help.
+
+    --max-fps value
+        Limit the frame rate of screen capture (only supported on
+        devices with Android >= 10).
+
+    -m, --max-size value
+        Limit both the width and height of the video to value. The
+        other dimension is computed so that the device aspect-ratio
+        is preserved.
+        Default is 0 (unlimited).
+
+    -n, --no-control
+        Disable device control (mirror the device in read-only).
+
+    -N, --no-display
+        Do not display device (only when screen recording is
+        enabled).
+
+    -p, --port port
+        Set the TCP port the client listens on.
+        Default is 27183.
+
+    --prefer-text
+        Inject alpha characters and space as text events instead of
+        key events.
+        This avoids issues when combining multiple keys to enter a
+        special character, but breaks the expected behavior of alpha
+        keys in games (typically WASD).
+
+    --push-target path
+        Set the target directory for pushing files to the device by
+        drag & drop. It is passed as-is to "adb push".
+        Default is "/sdcard/".
+
+    -r, --record file.mp4
+        Record screen to file.
+        The format is determined by the --record-format option if
+        set, or by the file extension (.mp4 or .mkv).
+
+    --record-format format
+        Force recording format (either mp4 or mkv).
+
+    --render-expired-frames
+        By default, to minimize latency, scrcpy always renders the
+        last available decoded frame, and drops any previous ones.
+        This flag forces to render all frames, at a cost of a
+        possible increased latency.
+
+    -s, --serial serial
+        The device serial number. Mandatory only if several devices
+        are connected to adb.
+
+    -S, --turn-screen-off
+        Turn the device screen off immediately.
+
+    -t, --show-touches
+        Enable "show touches" on start, disable on quit.
+        It only shows physical touches (not clicks from scrcpy).
+
+    -v, --version
+        Print the version of scrcpy.
+
+    --window-borderless
+        Disable window decorations (display borderless window).
+
+    --window-title text
+        Set a custom window title.
+
+    --window-x value
+        Set the initial window horizontal position.
+        Default is -1 (automatic).
+
+    --window-y value
+        Set the initial window vertical position.
+        Default is -1 (automatic).
+
+    --window-width value
+        Set the initial window width.
+        Default is 0 (automatic).
+
+    --window-height value
+        Set the initial window width.
+        Default is 0 (automatic).
+
+Shortcuts:
+
+    Ctrl+f
+        switch fullscreen mode
+
+    Ctrl+g
+        resize window to 1:1 (pixel-perfect)
+
+    Ctrl+x
+    Double-click on black borders
+        resize window to remove black borders
+
+    Ctrl+h
+    Middle-click
+        click on HOME
+
+    Ctrl+b
+    Ctrl+Backspace
+    Right-click (when screen is on)
+        click on BACK
+
+    Ctrl+s
+        click on APP_SWITCH
+
+    Ctrl+m
+        click on MENU
+
+    Ctrl+Up
+        click on VOLUME_UP
+
+    Ctrl+Down
+        click on VOLUME_DOWN
+
+    Ctrl+p
+        click on POWER (turn screen on/off)
+
+    Right-click (when screen is off)
+        power on
+
+    Ctrl+o
+        turn device screen off (keep mirroring)
+
+    Ctrl+r
+        rotate device screen
+
+    Ctrl+n
+       expand notification panel
+
+    Ctrl+Shift+n
+       collapse notification panel
+
+    Ctrl+c
+        copy device clipboard to computer
+
+    Ctrl+v
+        paste computer clipboard to device
+
+    Ctrl+Shift+v
+        copy computer clipboard to device
+
+    Ctrl+i
+        enable/disable FPS counter (print frames/second in logs)
+
+    Drag & drop APK file
+        install APK from computer
+
+ian@ian:~$ 
+
+=====
+
+
+ian@ian:~$ scrcpy
+INFO: scrcpy 1.12.1 <https://github.com/Genymobile/scrcpy>
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+/usr/share/scrcpy/scrcpy-server: 1 fil...ped. 71.9 MB/s (24773 bytes in 0.000s)
+INFO: Initial texture: 1080x1920
+[server] ERROR: Exception on thread Thread[main,5,main]
+android.media.MediaCodec$CodecException: Error 0xfffffc0e
+	at android.media.MediaCodec.native_configure(Native Method)
+	at android.media.MediaCodec.configure(MediaCodec.java:2127)
+	at android.media.MediaCodec.configure(MediaCodec.java:2043)
+	at com.genymobile.scrcpy.ScreenEncoder.configure(ScreenEncoder.java:167)
+	at com.genymobile.scrcpy.ScreenEncoder.streamScreen(ScreenEncoder.java:68)
+	at com.genymobile.scrcpy.Server.scrcpy(Server.java:34)
+	at com.genymobile.scrcpy.Server.main(Server.java:163)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:399)
+[server] ERROR: The hardware encoder is not able to encode at the given definition.
+[server] ERROR: Try with a lower definition:
+[server] ERROR:     scrcpy -m 1024WARN: Device disconnected
+
+ian@ian:~$ 
+Set USB tethering
+
+INFO: Initial texture: 1080x1920 <--- Too high a resolution???
+
+ian@ian:~$ scrcpy
+INFO: scrcpy 1.12.1 <https://github.com/Genymobile/scrcpy>
+/usr/share/scrcpy/scrcpy-server: 1 fil...ed. 100.2 MB/s (24773 bytes in 0.000s)
+INFO: Initial texture: 1080x1920
+WARN: Device disconnected
+[server] ERROR: Exception on thread Thread[main,5,main]
+android.media.MediaCodec$CodecException: Error 0xfffffc0e
+	at android.media.MediaCodec.native_configure(Native Method)
+	at android.media.MediaCodec.configure(MediaCodec.java:2127)
+	at android.media.MediaCodec.configure(MediaCodec.java:2043)
+	at com.genymobile.scrcpy.ScreenEncoder.configure(ScreenEncoder.java:167)
+	at com.genymobile.scrcpy.ScreenEncoder.streamScreen(ScreenEncoder.java:68)
+	at com.genymobile.scrcpy.Server.scrcpy(Server.java:34)
+	at com.genymobile.scrcpy.Server.main(Server.java:163)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+[server] ERROR: The hardware encoder is not able to encode at the given definition.
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:399)
+[server] ERROR: Try with a lower definition:
+[server] ERROR:     scrcpy -m 1024 #<--- This should have worked
+ian@ian:~$ 
+
+
+FTP
+
+====
+
+This works...
+
+ian@ian:~$ scrcpy -m 1080
+INFO: scrcpy 1.12.1 <https://github.com/Genymobile/scrcpy>
+/usr/share/scrcpy/scrcpy-server: 1 fil...ed. 131.0 MB/s (24773 bytes in 0.000s)
+INFO: Initial texture: 608x1080
+INFO: New texture: 1080x608
+
+With USB debugging turned ON
+
+=====
+
+^Cian@ian:~$ scrcpy -m 1024
+INFO: scrcpy 1.12.1 <https://github.com/Genymobile/scrcpy>
+/usr/share/scrcpy/scrcpy-server: 1 fil...ed. 124.4 MB/s (24773 bytes in 0.000s)
+INFO: Initial texture: 576x1024
+
+^Cian@ian:~$ scrcpy -m 600
+INFO: scrcpy 1.12.1 <https://github.com/Genymobile/scrcpy>
+/usr/share/scrcpy/scrcpy-server: 1 fil...ed. 115.0 MB/s (24773 bytes in 0.000s)
+INFO: Initial texture: 336x600
+
+Changes size of screen on PC.
+
+===
+
+ian@ian:~$ whereis scrcpy
+
+scrcpy: 
+/usr/bin/scrcpy 
+/usr/share/scrcpy 
+/usr/share/man/man1/scrcpy.1.gz
+
+===
+
+Go to settings of 
+
+Android Studio -> ADB Wi-Fi -> then in Command-line flags Write: --max-size 1080 --always-on-top --show-touches
+
+
+ian@ian:~$ android-studio --help
+
+Command 'android-studio' not found, but can be installed with:
+
+sudo snap install android-studio
+
+ian@ian:~$ 
+
+
+=====
+
+
+ian@ian:~$ cd android-studio/
+ian@ian:~/android-studio$ ls
+bin        Install-Linux-tar.txt  lib      LICENSE.txt  plugins
+build.txt  jre                    license  NOTICE.txt   product-info.json
+ian@ian:~/android-studio$ cd bin
+ian@ian:~/android-studio/bin$ ls
+appletviewer.policy  idea.properties  printenv.py         studio.svg
+clang                inspect.sh       restart.py          studio.vmoptions
+format.sh            libdbm64.so      studio64.vmoptions
+fsnotifier           lldb             studio.png
+fsnotifier64         log.xml          studio.sh
+ian@ian:~/android-studio/bin$ ./studio.sh
+
+Opens a GUI window
+
+2021-10-13 12:50:45,255 [   5042]   WARN - com.intellij.ide.ui.LafManager - List.rowHeight = 0 in IntelliJ; it may lead to performance degradation 
+2021-10-13 12:50:45,255 [   5042]   WARN - com.intellij.ide.ui.LafManager - Table.rowHeight = 0 in IntelliJ; it may lead to performance degradation 
+2021-10-13 12:50:45,255 [   5042]   WARN - com.intellij.ide.ui.LafManager - Tree.rowHeight = 0 in IntelliJ; it may lead to performance degradation 
+2021-10-13 12:50:45,584 [   5371]   WARN - nSystem.impl.ActionManagerImpl - keymap "ReSharper" not found [Plugin: com.android.tools.ndk] 
+2021-10-13 12:50:47,946 [   7733]   WARN - llij.ide.plugins.PluginManager - Plugin "Kotlin" is incompatible (since build 203.6682 > AI-193.6911.18.40.6626763) 
+2021-10-13 12:50:55,518 [  15305]   WARN - ugins.textmate.TextMateService - Missing builtin bundles, checked: 
+
+
+File...
+
+Settings...  Opens another window
+
+No ADB Wifi
+
+
+
+=====
+
+ian@ian:~$ scrcpy --max-size 1080
+INFO: scrcpy 1.12.1 <https://github.com/Genymobile/scrcpy>
+/usr/share/scrcpy/scrcpy-server: 1 fil...ped. 95.9 MB/s (24773 bytes in 0.000s)
+INFO: Initial texture: 608x1080
+
+
+=====
+
+
+
+
+

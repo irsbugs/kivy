@@ -1,0 +1,2128 @@
+
+=====
+
+ian@ian:~$ apt search kivy
+Sorting... Done
+Full Text Search... Done
+python-kivy-examples/focal,focal 1.10.1-1build2 all
+  Kivy - Multimedia / Multitouch framework in Python (examples)
+
+python3-kivy/focal 1.10.1-1build2 amd64
+  Kivy - Multimedia / Multitouch framework in Python (Python 3)
+
+ian@ian:~$ 
+
+
+ian@ian:~$ apt search buildozer
+Sorting... Done
+Full Text Search... Done
+ian@ian:~$ 
+
+=====
+
+pypi 
+buildozer 1.2.0Jun 2, 2020
+Generic Python packager for Android / iOS and Desktop
+
+
+Installing Buildozer with target Python 3 (default):
+Install buildozer:
+
+# via pip (latest stable, recommended)
+# if you use a virtualenv, don't use the `--user` option
+pip install --user buildozer
+
+# latest dev version
+# if you use a virtualenv, don't use the `--user` option
+pip install --user https://github.com/kivy/buildozer/archive/master.zip
+
+# git clone, for working on buildozer
+git clone https://github.com/kivy/buildozer
+cd buildozer
+python setup.py build
+pip install -e .
+Check buildozer is in your path
+
+`which buildozer`
+# if there is no result, and you installed with --user, add this line at the end of your `~/.bashrc` file.
+export PATH=~/.local/bin/:$PATH
+# and then run
+. ~/.bashrc
+Go into your application directory and run:
+
+buildozer init
+# edit the buildozer.spec, then
+buildozer android debug deploy run
+
+
+=====
+
+Examples of Buildozer commands
+# buildozer target command
+buildozer android clean
+buildozer android update
+buildozer android deploy
+buildozer android debug
+buildozer android release
+
+# or all in one (compile in debug, deploy on device)
+buildozer android debug deploy
+
+# set the default command if nothing set
+buildozer setdefault android debug deploy run
+
+=====
+
+
+Kivy 2.0.0 Dec 10, 2020
+A software library for rapid development of hardware-accelerated multitouch applications.
+
+=====
+
+
+https://kivy.org/doc/stable/gettingstarted/installation.html
+
+Setup terminal and pip¶
+
+Before Kivy can be installed, Python and pip needs to be pre-installed. Then, start a new terminal that has Python available. In the terminal, update pip and other installation dependencies so you have the latest version as follows (for linux users you may have to substitute python3 instead of python and also add a --user flag in the subsequent commands outside the virtual environment):
+
+python -m pip install --upgrade pip setuptools virtualenv
+Create virtual environment¶
+Create a new virtual environment for your Kivy project. A virtual environment will prevent possible installation conflicts with other Python versions and packages. It’s optional but strongly recommended:
+
+Create the virtual environment named kivy_venv in your current directory:
+
+python -m virtualenv kivy_venv
+Activate the virtual environment. You will have to do this step from the current directory every time you start a new terminal. This sets up the environment so the new kivy_venv Python is used.
+
+For Windows default CMD, in the command line do:
+
+kivy_venv\Scripts\activate
+If you are in a bash terminal on Windows, instead do:
+
+source kivy_venv/Scripts/activate
+If you are in linux, instead do:
+
+source kivy_venv/bin/activate
+
+=====
+
+
+ian@ian:~$ pwd
+/home/ian
+ian@ian:~$ python -m pip install --upgrade pip setuptools virtualenv
+Collecting pip
+  Downloading pip-21.2.4-py3-none-any.whl (1.6 MB)
+     |████████████████████████████████| 1.6 MB 10.4 MB/s 
+Collecting setuptools
+  Downloading setuptools-58.1.0-py3-none-any.whl (816 kB)
+     |████████████████████████████████| 816 kB 18.5 MB/s 
+Collecting virtualenv
+  Downloading virtualenv-20.8.1-py2.py3-none-any.whl (5.3 MB)
+     |████████████████████████████████| 5.3 MB 12.4 MB/s 
+Collecting backports.entry-points-selectable>=1.0.4
+  Downloading backports.entry_points_selectable-1.1.0-py2.py3-none-any.whl (6.2 kB)
+Collecting filelock<4,>=3.0.0
+  Downloading filelock-3.1.0-py2.py3-none-any.whl (8.4 kB)
+Collecting distlib<1,>=0.3.1
+  Downloading distlib-0.3.3-py2.py3-none-any.whl (496 kB)
+     |████████████████████████████████| 496 kB 21.3 MB/s 
+Requirement already satisfied, skipping upgrade: six<2,>=1.9.0 in /usr/lib/python3/dist-packages (from virtualenv) (1.14.0)
+Collecting platformdirs<3,>=2
+  Downloading platformdirs-2.4.0-py3-none-any.whl (14 kB)
+ERROR: launchpadlib 1.10.13 requires testresources, which is not installed.
+Installing collected packages: pip, setuptools, backports.entry-points-selectable, filelock, distlib, platformdirs, virtualenv
+Successfully installed backports.entry-points-selectable-1.1.0 distlib-0.3.3 filelock-3.1.0 pip-21.2.4 platformdirs-2.4.0 setuptools-58.1.0 virtualenv-20.8.1
+ian@ian:~$ 
+
+
+=====
+
+ian@ian:~$ pip install testresources
+Collecting testresources
+  Downloading testresources-2.0.1-py2.py3-none-any.whl (36 kB)
+Collecting pbr>=1.8
+  Downloading pbr-5.6.0-py2.py3-none-any.whl (111 kB)
+     |████████████████████████████████| 111 kB 19.5 MB/s 
+Installing collected packages: pbr, testresources
+Successfully installed pbr-5.6.0 testresources-2.0.1
+ian@ian:~$ 
+ian@ian:~$ python -m pip install --upgrade pip setuptools virtualenv
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pip in ./.local/lib/python3.8/site-packages (21.2.4)
+Requirement already satisfied: setuptools in ./.local/lib/python3.8/site-packages (58.1.0)
+Requirement already satisfied: virtualenv in ./.local/lib/python3.8/site-packages (20.8.1)
+Requirement already satisfied: filelock<4,>=3.0.0 in ./.local/lib/python3.8/site-packages (from virtualenv) (3.1.0)
+Requirement already satisfied: platformdirs<3,>=2 in ./.local/lib/python3.8/site-packages (from virtualenv) (2.4.0)
+Requirement already satisfied: six<2,>=1.9.0 in /usr/lib/python3/dist-packages (from virtualenv) (1.14.0)
+Requirement already satisfied: backports.entry-points-selectable>=1.0.4 in ./.local/lib/python3.8/site-packages (from virtualenv) (1.1.0)
+Requirement already satisfied: distlib<1,>=0.3.1 in ./.local/lib/python3.8/site-packages (from virtualenv) (0.3.3)
+ian@ian:~$ 
+
+=====
+
+ian@ian:~$ python -m virtualenv kivy_venv
+created virtual environment CPython3.8.10.final.0-64 in 379ms
+  creator CPython3Posix(dest=/home/ian/kivy_venv, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/ian/.local/share/virtualenv)
+    added seed packages: pip==21.2.4, setuptools==58.1.0, wheel==0.37.0
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+ian@ian:~$ 
+
+
+=====
+
+ian@ian:~$ source kivy_venv/bin/activate
+(kivy_venv) ian@ian:~$ 
+
+
+ian@ian:~$ source kivy_venv/bin/activate
+(kivy_venv) ian@ian:~$ mkdir kivy
+(kivy_venv) ian@ian:~$ cd kivy
+(kivy_venv) ian@ian:~/kivy$ 
+(kivy_venv) ian@ian:~/kivy$ python -m pip install kivy[base] kivy_examples
+Collecting kivy[base]
+  Downloading Kivy-2.0.0-cp38-cp38-manylinux2010_x86_64.whl (22.2 MB)
+     |████████████████████████████████| 22.2 MB 6.2 kB/s 
+Collecting kivy_examples
+  Downloading Kivy_examples-2.0.0-py2.py3-none-any.whl (9.2 MB)
+     |████████████████████████████████| 9.2 MB 12.1 MB/s 
+Collecting Kivy-Garden>=0.1.4
+  Downloading kivy-garden-0.1.4.tar.gz (6.8 kB)
+Collecting pygments
+  Downloading Pygments-2.10.0-py3-none-any.whl (1.0 MB)
+     |████████████████████████████████| 1.0 MB 18.5 MB/s 
+Collecting docutils
+  Downloading docutils-0.17.1-py2.py3-none-any.whl (575 kB)
+     |████████████████████████████████| 575 kB 15.7 MB/s 
+Collecting pillow
+  Downloading Pillow-8.3.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+     |████████████████████████████████| 3.0 MB 13.9 MB/s 
+Collecting requests
+  Downloading requests-2.26.0-py2.py3-none-any.whl (62 kB)
+     |████████████████████████████████| 62 kB 1.2 MB/s 
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.7-py2.py3-none-any.whl (138 kB)
+     |████████████████████████████████| 138 kB 28.8 MB/s 
+Collecting charset-normalizer~=2.0.0
+  Downloading charset_normalizer-2.0.6-py3-none-any.whl (37 kB)
+Collecting certifi>=2017.4.17
+  Downloading certifi-2021.5.30-py2.py3-none-any.whl (145 kB)
+     |████████████████████████████████| 145 kB 12.2 MB/s 
+Collecting idna<4,>=2.5
+  Downloading idna-3.2-py3-none-any.whl (59 kB)
+     |████████████████████████████████| 59 kB 9.7 MB/s 
+Building wheels for collected packages: Kivy-Garden
+  Building wheel for Kivy-Garden (setup.py) ... done
+  Created wheel for Kivy-Garden: filename=Kivy_Garden-0.1.4-py3-none-any.whl size=4531 sha256=d0f7ee81ba5bf01e30f0a438b07a2d0425e9f5d493fb2af7950639047ef738f1
+  Stored in directory: /home/ian/.cache/pip/wheels/d2/72/1a/9ddd17f00755707937caa350616965fb3330a6270425f397e6
+Successfully built Kivy-Garden
+Installing collected packages: urllib3, idna, charset-normalizer, certifi, requests, pygments, Kivy-Garden, docutils, pillow, kivy, kivy-examples
+Successfully installed Kivy-Garden-0.1.4 certifi-2021.5.30 charset-normalizer-2.0.6 docutils-0.17.1 idna-3.2 kivy-2.0.0 kivy-examples-2.0.0 pillow-8.3.2 pygments-2.10.0 requests-2.26.0 urllib3-1.26.7
+(kivy_venv) ian@ian:~/kivy$ 
+
+===
+
+(kivy_venv) ian@ian:~/kivy$ ls
+(kivy_venv) ian@ian:~/kivy$ ls -l
+total 0
+
+===
+
+
+(kivy_venv) ian@ian:~/kivy$ python kivy_venv/share/kivy-examples/demo/showcase/main.py
+python: can't open file 'kivy_venv/share/kivy-examples/demo/showcase/main.py': [Errno 2] No such file or directory
+(kivy_venv) ian@ian:~/kivy$ cd ..
+(kivy_venv) ian@ian:~$ python kivy_venv/share/kivy-examples/demo/showcase/main.py
+[WARNING] [Config      ] Older configuration version detected (0 instead of 21)
+[WARNING] [Config      ] Upgrading configuration in progress.
+[INFO   ] [Logger      ] Record log in /home/ian/.kivy/logs/kivy_21-09-29_0.txt
+[INFO   ] [Kivy        ] v2.0.0
+[INFO   ] [Kivy        ] Installed at "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/__init__.py"
+[INFO   ] [Python      ] v3.8.10 (default, Jun  2 2021, 10:49:15) 
+[GCC 9.4.0]
+[INFO   ] [Python      ] Interpreter at "/home/ian/kivy_venv/bin/python"
+[INFO   ] [Factory     ] 186 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] [Window      ] Provider: sdl2
+[INFO   ] [GL          ] Using the "OpenGL" graphics system
+[INFO   ] [GL          ] Backend used <sdl2>
+[INFO   ] [GL          ] OpenGL version <b'3.3 (Compatibility Profile) Mesa 21.0.3'>
+[INFO   ] [GL          ] OpenGL vendor <b'nouveau'>
+[INFO   ] [GL          ] OpenGL renderer <b'NVA8'>
+[INFO   ] [GL          ] OpenGL parsed version: 3, 3
+[INFO   ] [GL          ] Shading version <b'3.30'>
+[INFO   ] [GL          ] Texture max size <8192>
+[INFO   ] [GL          ] Texture max units <16>
+[INFO   ] [Window      ] auto add sdl2 input provider
+[INFO   ] [Window      ] virtual keyboard not allowed, single mode, not docked
+[INFO   ] [Text        ] Provider: sdl2
+[INFO   ] [Clipboard   ] Provider: sdl2(['clipboard_xclip', 'clipboard_xsel', 'clipboard_dbusklipper', 'clipboard_gtk3'] ignored)
+[CRITICAL] [Cutbuffer   ] Unable to find any valuable Cutbuffer provider. Please enable debug logging (e.g. add -d if running from the command line, or change the log level in the config) and re-run your app to identify potential causes
+xclip - FileNotFoundError: [Errno 2] No such file or directory: 'xclip'
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/core/__init__.py", line 58, in core_select_lib
+    mod = __import__(name='{2}.{0}.{1}'.format(
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/core/clipboard/clipboard_xclip.py", line 17, in <module>
+    p = subprocess.Popen(['xclip', '-version'], stdout=subprocess.PIPE,
+  File "/usr/lib/python3.8/subprocess.py", line 858, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1704, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+
+xsel - FileNotFoundError: [Errno 2] No such file or directory: 'xsel'
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/core/__init__.py", line 58, in core_select_lib
+    mod = __import__(name='{2}.{0}.{1}'.format(
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/core/clipboard/clipboard_xsel.py", line 16, in <module>
+    p = subprocess.Popen(['xsel'], stdout=subprocess.PIPE)
+  File "/usr/lib/python3.8/subprocess.py", line 858, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1704, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+
+[INFO   ] [Base        ] Start application main loop
+[INFO   ] [GL          ] NPOT texture support is available
+[WARNING] [Accordion   ] not enough space for displaying all children
+[WARNING] [Accordion   ] need 132px, got 84px
+[WARNING] [Accordion   ] layout aborted.
+[WARNING] [Accordion   ] not enough space for displaying all children
+[WARNING] [Accordion   ] need 132px, got 84px
+[WARNING] [Accordion   ] layout aborted.
+
+
+=====
+
+"sudo apt update" "sudo apt upgrade" "sudo apt install xclip xsel" 
+
+
+(kivy_venv) ian@ian:~$ sudo apt install xclip xsel 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libllvm11 libllvm11:i386 libxdamage1:i386
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  xclip xsel
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 38.8 kB of archives.
+After this operation, 121 kB of additional disk space will be used.
+Get:1 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 xclip amd64 0.13-1 [18.4 kB]
+Get:2 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 xsel amd64 1.2.0+git9bfc13d.20180109-3 [20.5 kB]
+Fetched 38.8 kB in 0s (266 kB/s)
+Selecting previously unselected package xclip.
+(Reading database ... 327602 files and directories currently installed.)
+Preparing to unpack .../xclip_0.13-1_amd64.deb ...
+Unpacking xclip (0.13-1) ...
+Selecting previously unselected package xsel.
+Preparing to unpack .../xsel_1.2.0+git9bfc13d.20180109-3_amd64.deb ...
+Unpacking xsel (1.2.0+git9bfc13d.20180109-3) ...
+Setting up xsel (1.2.0+git9bfc13d.20180109-3) ...
+Setting up xclip (0.13-1) ...
+Processing triggers for man-db (2.9.1-1) ...
+(kivy_venv) ian@ian:~$ 
+
+=====
+
+(kivy_venv) ian@ian:~$ 
+(kivy_venv) ian@ian:~$ python kivy_venv/share/kivy-examples/demo/showcase/main.py
+[INFO   ] [Logger      ] Record log in /home/ian/.kivy/logs/kivy_21-09-29_2.txt
+[INFO   ] [Kivy        ] v2.0.0
+[INFO   ] [Kivy        ] Installed at "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/__init__.py"
+[INFO   ] [Python      ] v3.8.10 (default, Jun  2 2021, 10:49:15) 
+[GCC 9.4.0]
+[INFO   ] [Python      ] Interpreter at "/home/ian/kivy_venv/bin/python"
+[INFO   ] [Factory     ] 186 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] [Window      ] Provider: sdl2
+[INFO   ] [GL          ] Using the "OpenGL" graphics system
+[INFO   ] [GL          ] Backend used <sdl2>
+[INFO   ] [GL          ] OpenGL version <b'3.3 (Compatibility Profile) Mesa 21.0.3'>
+[INFO   ] [GL          ] OpenGL vendor <b'nouveau'>
+[INFO   ] [GL          ] OpenGL renderer <b'NVA8'>
+[INFO   ] [GL          ] OpenGL parsed version: 3, 3
+[INFO   ] [GL          ] Shading version <b'3.30'>
+[INFO   ] [GL          ] Texture max size <8192>
+[INFO   ] [GL          ] Texture max units <16>
+[INFO   ] [Window      ] auto add sdl2 input provider
+[INFO   ] [Window      ] virtual keyboard not allowed, single mode, not docked
+[INFO   ] [Text        ] Provider: sdl2
+[INFO   ] [Clipboard   ] Provider: xclip
+[INFO   ] [CutBuffer   ] cut buffer support enabled
+[INFO   ] [Base        ] Start application main loop
+[INFO   ] [GL          ] NPOT texture support is available
+[WARNING] [Accordion   ] not enough space for displaying all children
+[WARNING] [Accordion   ] need 132px, got 84px
+[WARNING] [Accordion   ] layout aborted.
+[WARNING] [Accordion   ] not enough space for displaying all children
+[WARNING] [Accordion   ] need 132px, got 84px
+[WARNING] [Accordion   ] layout aborted.
+
+
+=====
+This example works OK on the PC....
+
+(kivy_venv) ian@ian:~$ python kivy_venv/share/kivy-examples/demo/touchtracer/main.py
+[INFO   ] [Logger      ] Record log in /home/ian/.kivy/logs/kivy_21-09-29_3.txt
+[INFO   ] [Kivy        ] v2.0.0
+[INFO   ] [Kivy        ] Installed at "/home/ian/kivy_venv/lib/python3.8/site-packages/kivy/__init__.py"
+[INFO   ] [Python      ] v3.8.10 (default, Jun  2 2021, 10:49:15) 
+[GCC 9.4.0]
+[INFO   ] [Python      ] Interpreter at "/home/ian/kivy_venv/bin/python"
+[INFO   ] [Factory     ] 186 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] [Text        ] Provider: sdl2
+[INFO   ] [Window      ] Provider: sdl2
+[INFO   ] [GL          ] Using the "OpenGL" graphics system
+[INFO   ] [GL          ] Backend used <sdl2>
+[INFO   ] [GL          ] OpenGL version <b'3.3 (Compatibility Profile) Mesa 21.0.3'>
+[INFO   ] [GL          ] OpenGL vendor <b'nouveau'>
+[INFO   ] [GL          ] OpenGL renderer <b'NVA8'>
+[INFO   ] [GL          ] OpenGL parsed version: 3, 3
+[INFO   ] [GL          ] Shading version <b'3.30'>
+[INFO   ] [GL          ] Texture max size <8192>
+[INFO   ] [GL          ] Texture max units <16>
+[INFO   ] [Window      ] auto add sdl2 input provider
+[INFO   ] [Window      ] virtual keyboard not allowed, single mode, not docked
+[INFO   ] [GL          ] NPOT texture support is available
+[INFO   ] [Base        ] Start application main loop
+[INFO   ] [Base        ] Leaving application in progress...
+
+Click mouse can draw on screen.
+
+(kivy_venv) ian@ian:~$ 
+
+=====
+(kivy_venv) ian@ian:~$ cd kivy
+(kivy_venv) ian@ian:~/kivy$ ls
+
+(kivy_venv) ian@ian:~/kivy$ pip install buildozer
+Collecting buildozer
+  Downloading buildozer-1.2.0-py3-none-any.whl (77 kB)
+     |████████████████████████████████| 77 kB 5.7 MB/s 
+Collecting sh
+  Downloading sh-1.14.2-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 9.3 MB/s 
+Collecting virtualenv
+  Using cached virtualenv-20.8.1-py2.py3-none-any.whl (5.3 MB)
+Collecting pexpect
+  Using cached pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+Collecting ptyprocess>=0.5
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting distlib<1,>=0.3.1
+  Using cached distlib-0.3.3-py2.py3-none-any.whl (496 kB)
+Collecting platformdirs<3,>=2
+  Using cached platformdirs-2.4.0-py3-none-any.whl (14 kB)
+Collecting six<2,>=1.9.0
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting backports.entry-points-selectable>=1.0.4
+  Using cached backports.entry_points_selectable-1.1.0-py2.py3-none-any.whl (6.2 kB)
+Collecting filelock<4,>=3.0.0
+  Using cached filelock-3.1.0-py2.py3-none-any.whl (8.4 kB)
+Installing collected packages: six, ptyprocess, platformdirs, filelock, distlib, backports.entry-points-selectable, virtualenv, sh, pexpect, buildozer
+Successfully installed backports.entry-points-selectable-1.1.0 buildozer-1.2.0 distlib-0.3.3 filelock-3.1.0 pexpect-4.8.0 platformdirs-2.4.0 ptyprocess-0.7.0 sh-1.14.2 six-1.16.0 virtualenv-20.8.1
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ ls ~/kivy_venv/bin/buil* -l
+-rwxrwxr-x 1 ian ian 237 Sep 29 19:38 /home/ian/kivy_venv/bin/buildozer
+-rwxrwxr-x 1 ian ian 237 Sep 29 19:38 /home/ian/kivy_venv/bin/buildozer-remote
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ 
+(kivy_venv) ian@ian:~/kivy$ which buildozer
+/home/ian/kivy_venv/bin/buildozer
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ buildozer init
+File buildozer.spec created, ready to customize!
+(kivy_venv) ian@ian:~/kivy$ ls -l
+total 12
+-rw-rw-r-- 1 ian ian 10489 Sep 29 19:41 buildozer.spec
+
+
+===
+buildozer.spec...
+
+[app]
+
+# (str) Title of your application
+title = My Application
+
+# (str) Package name
+package.name = myapp
+
+# (str) Package domain (needed for android/ios packaging)
+package.domain = org.test
+
+# (str) Source code where the main.py live
+source.dir = .
+
+# (list) Source files to include (let empty to include all the files)
+source.include_exts = py,png,jpg,kv,atlas
+
+# (list) List of inclusions using pattern matching
+#source.include_patterns = assets/*,images/*.png
+
+# (list) Source files to exclude (let empty to not exclude anything)
+#source.exclude_exts = spec
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ buildozer android debug deploy run
+# Check configuration tokens
+# Ensure build layout
+# Create directory /home/ian/.buildozer
+# Create directory /home/ian/.buildozer/cache
+# Create directory /home/ian/kivy/.buildozer
+# Create directory /home/ian/kivy/bin
+# Create directory /home/ian/kivy/.buildozer/applibs
+# Create directory /home/ian/.buildozer/android/platform/android/platform
+# Create directory /home/ian/kivy/.buildozer/android/platform
+# Create directory /home/ian/kivy/.buildozer/android/app
+# Check configuration tokens
+# Read available permissions from api-versions.xml
+# Preparing build
+# Check requirements for android
+# Run 'dpkg --version'
+# Cwd None
+Debian 'dpkg' package management program version 1.19.7 (amd64).
+This is free software; see the GNU General Public License version 2 or
+later for copying conditions. There is NO warranty.
+# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+# Cython (cython) not found, please install it.
+(kivy_venv) ian@ian:~/kivy$ 
+
+=====
+
+
+cython3/focal 0.29.14-0.1ubuntu3 amd64
+  C-Extensions for Python 3
+
+cython3-dbg/focal 0.29.14-0.1ubuntu3 amd64
+  C-Extensions for Python 3 - debug build
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ sudo apt install cython3 cython3-dbg cython-doc 
+[sudo] password for ian: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libllvm11 libllvm11:i386 libxdamage1:i386
+Use 'sudo apt autoremove' to remove them.
+Suggested packages:
+  cython
+The following NEW packages will be installed:
+  cython-doc cython3 cython3-dbg
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 13.5 MB of archives.
+After this operation, 49.3 MB of additional disk space will be used.
+Get:1 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 cython-doc all 0.29.14-0.1ubuntu3 [577 kB]
+Get:2 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 cython3 amd64 0.29.14-0.1ubuntu3 [1,474 kB]
+Get:3 http://nz.archive.ubuntu.com/ubuntu focal/universe amd64 cython3-dbg amd64 0.29.14-0.1ubuntu3 [11.4 MB]
+Fetched 13.5 MB in 1s (9,694 kB/s)      
+Selecting previously unselected package cython-doc.
+(Reading database ... 327620 files and directories currently installed.)
+Preparing to unpack .../cython-doc_0.29.14-0.1ubuntu3_all.deb ...
+Unpacking cython-doc (0.29.14-0.1ubuntu3) ...
+Selecting previously unselected package cython3.
+Preparing to unpack .../cython3_0.29.14-0.1ubuntu3_amd64.deb ...
+Unpacking cython3 (0.29.14-0.1ubuntu3) ...
+Selecting previously unselected package cython3-dbg.
+Preparing to unpack .../cython3-dbg_0.29.14-0.1ubuntu3_amd64.deb ...
+Unpacking cython3-dbg (0.29.14-0.1ubuntu3) ...
+Setting up cython-doc (0.29.14-0.1ubuntu3) ...
+Setting up cython3 (0.29.14-0.1ubuntu3) ...
+Setting up cython3-dbg (0.29.14-0.1ubuntu3) ...
+(kivy_venv) ian@ian:~/kivy$ 
+
+=====
+
+1
+
+This is because buildozer search cython, but the actual command is cython3. To solve this you have to create a cython command that passes all arguments to cython3.
+
+Write in the terminal
+
+cd /bin/ && sudo gedit cython
+in the editor that will pop-up write
+
+cython3 $@
+this will pass all the arguments from cython to cython3. Save the file and write in the terminal
+
+sudo chmod 755 cython
+to make it executable. To test it simply write
+
+cython
+It should have the same output as
+
+cython3
+
+=====
+
+
+ian@ian:/bin$ ls cython -l
+-rw-r--r-- 1 root root 11 Sep 29 19:53 cython
+ian@ian:/bin$ sudo chmod 755 cython
+ian@ian:/bin$ ls cython -l
+-rwxr-xr-x 1 root root 11 Sep 29 19:53 cython
+ian@ian:/bin$ 
+
+=====
+
+Now "cython" launches "cython3"
+
+=====
+
+# Search for Cython (cython)
+#  -> found at /usr/bin/cython
+# Search for Java compiler (javac)
+# Java compiler (javac) not found, please install it.
+
+=====
+
+sudo apt-get install openjdk-8-jdk
+
+
+Buildozer doesn't require you to have openjdk-8. Take a newer version that is available, for example sudo apt-get install openjdk-14-jdk.
+
+
+sudo apt install -y git zip unzip openjdk-8-jdk
+
+=====
+
+ian@ian:~$ sudo apt search openjdk-8-jdk
+[sudo] password for ian: 
+Sorting... Done
+Full Text Search... Done
+openjdk-8-jdk/focal-updates,focal-security 8u292-b10-0ubuntu1~20.04 amd64
+  OpenJDK Development Kit (JDK)
+
+openjdk-8-jdk-headless/focal-updates,focal-security 8u292-b10-0ubuntu1~20.04 amd64
+  OpenJDK Development Kit (JDK) (headless)
+
+ian@ian:~$ sudo apt search openjdk-11-jdk
+Sorting... Done
+Full Text Search... Done
+default-jdk/focal 2:1.11-72 amd64
+  Standard Java or Java compatible Development Kit
+
+default-jdk-headless/focal 2:1.11-72 amd64
+  Standard Java or Java compatible Development Kit (headless)
+
+openjdk-11-jdk/focal-updates,focal-security 11.0.11+9-0ubuntu2~20.04 amd64
+  OpenJDK Development Kit (JDK)
+
+openjdk-11-jdk-headless/focal-updates,focal-security 11.0.11+9-0ubuntu2~20.04 amd64
+  OpenJDK Development Kit (JDK) (headless)
+
+ian@ian:~$ sudo apt search openjdk-13-jdk
+Sorting... Done
+Full Text Search... Done
+openjdk-13-jdk/focal-updates 13.0.7+5-0ubuntu1~20.04 amd64
+  OpenJDK Development Kit (JDK)
+
+openjdk-13-jdk-headless/focal-updates 13.0.7+5-0ubuntu1~20.04 amd64
+  OpenJDK Development Kit (JDK) (headless)
+
+ian@ian:~$ sudo apt search openjdk-14-jdk
+Sorting... Done
+Full Text Search... Done
+ian@ian:~$ sudo apt search openjdk-15-jdk
+Sorting... Done
+Full Text Search... Done
+ian@ian:~$ sudo apt install openjdk-8-jdk
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libllvm11 libllvm11:i386 libxdamage1:i386
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libxt-dev openjdk-8-jdk-headless
+Suggested packages:
+  libxt-doc openjdk-8-demo openjdk-8-source visualvm
+The following NEW packages will be installed:
+  libxt-dev openjdk-8-jdk openjdk-8-jdk-headless
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 11.6 MB of archives.
+After this operation, 44.4 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://nz.archive.ubuntu.com/ubuntu focal/main amd64 libxt-dev amd64 1:1.1.5-1 [395 kB]
+Get:2 http://nz.archive.ubuntu.com/ubuntu focal-updates/universe amd64 openjdk-8-jdk-headless amd64 8u292-b10-0ubuntu1~20.04 [8,287 kB]
+Get:3 http://nz.archive.ubuntu.com/ubuntu focal-updates/universe amd64 openjdk-8-jdk amd64 8u292-b10-0ubuntu1~20.04 [2,895 kB]
+Fetched 11.6 MB in 1s (10.3 MB/s)        
+Selecting previously unselected package libxt-dev:amd64.
+(Reading database ... 328142 files and directories currently installed.)
+Preparing to unpack .../libxt-dev_1%3a1.1.5-1_amd64.deb ...
+Unpacking libxt-dev:amd64 (1:1.1.5-1) ...
+Selecting previously unselected package openjdk-8-jdk-headless:amd64.
+Preparing to unpack .../openjdk-8-jdk-headless_8u292-b10-0ubuntu1~20.04_amd64.de
+b ...
+Unpacking openjdk-8-jdk-headless:amd64 (8u292-b10-0ubuntu1~20.04) ...
+Selecting previously unselected package openjdk-8-jdk:amd64.
+Preparing to unpack .../openjdk-8-jdk_8u292-b10-0ubuntu1~20.04_amd64.deb ...
+Unpacking openjdk-8-jdk:amd64 (8u292-b10-0ubuntu1~20.04) ...
+Setting up libxt-dev:amd64 (1:1.1.5-1) ...
+Setting up openjdk-8-jdk-headless:amd64 (8u292-b10-0ubuntu1~20.04) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/idlj to provide
+ /usr/bin/idlj (idlj) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jdeps to provid
+e /usr/bin/jdeps (jdeps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/wsimport to pro
+vide /usr/bin/wsimport (wsimport) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/rmic to provide
+ /usr/bin/rmic (rmic) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jinfo to provid
+e /usr/bin/jinfo (jinfo) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jsadebugd to pr
+ovide /usr/bin/jsadebugd (jsadebugd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/native2ascii to
+ provide /usr/bin/native2ascii (native2ascii) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jstat to provid
+e /usr/bin/jstat (jstat) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javac to provid
+e /usr/bin/javac (javac) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javah to provid
+e /usr/bin/javah (javah) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/hsdb to provide
+ /usr/bin/hsdb (hsdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/clhsdb to provi
+de /usr/bin/clhsdb (clhsdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jps to provide 
+/usr/bin/jps (jps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jstack to provi
+de /usr/bin/jstack (jstack) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jrunscript to p
+rovide /usr/bin/jrunscript (jrunscript) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javadoc to prov
+ide /usr/bin/javadoc (javadoc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javap to provid
+e /usr/bin/javap (javap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jar to provide 
+/usr/bin/jar (jar) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/extcheck to pro
+vide /usr/bin/extcheck (extcheck) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/schemagen to pr
+ovide /usr/bin/schemagen (schemagen) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/xjc to provide 
+/usr/bin/xjc (xjc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jmap to provide
+ /usr/bin/jmap (jmap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jstatd to provi
+de /usr/bin/jstatd (jstatd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jhat to provide
+ /usr/bin/jhat (jhat) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jdb to provide 
+/usr/bin/jdb (jdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/serialver to pr
+ovide /usr/bin/serialver (serialver) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jfr to provide 
+/usr/bin/jfr (jfr) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/wsgen to provid
+e /usr/bin/wsgen (wsgen) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jcmd to provide
+ /usr/bin/jcmd (jcmd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jarsigner to pr
+ovide /usr/bin/jarsigner (jarsigner) in auto mode
+Setting up openjdk-8-jdk:amd64 (8u292-b10-0ubuntu1~20.04) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/appletviewer to
+ provide /usr/bin/appletviewer (appletviewer) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jconsole to pro
+vide /usr/bin/jconsole (jconsole) in auto mode
+Processing triggers for man-db (2.9.1-1) ...
+ian@ian:~$ 
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ buildozer android debug deploy run
+# Check configuration tokens
+# Ensure build layout
+# Check configuration tokens
+# Read available permissions from api-versions.xml
+# Preparing build
+# Check requirements for android
+# Run 'dpkg --version'
+# Cwd None
+Debian 'dpkg' package management program version 1.19.7 (amd64).
+This is free software; see the GNU General Public License version 2 or
+later for copying conditions. There is NO warranty.
+# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+#  -> found at /usr/bin/cython
+# Search for Java compiler (javac)
+#  -> found at /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+# Search for Java keytool (keytool)
+#  -> found at /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool
+# Install platform
+# Run 'git clone -b master --single-branch https://github.com/kivy/python-for-android.git python-for-android'
+# Cwd /home/ian/kivy/.buildozer/android/platform
+Cloning into 'python-for-android'...
+# Run '/home/ian/kivy_venv/bin/python -m pip install -q  \'appdirs\' \'colorama>=0.3.3\' \'jinja2\' \'six\' \'enum34; python_version<"3.4"\' \'sh>=1.10; sys_platform!="nt"\' \'pep517<0.7.0\' \'toml\''
+# Cwd None
+# Android ANT is missing, downloading
+# Downloading http://archive.apache.org/dist/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+# Run 'tar xzf apache-ant-1.9.4-bin.tar.gz'
+# Cwd /home/ian/.buildozer/android/platform/apache-ant-1.9.4
+# Apache ANT installation done.
+# Android SDK is missing, downloading
+# Downloading https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip
+# Unpacking Android SDK
+# Run 'unzip -q /home/ian/.buildozer/android/platform/android-sdk/commandlinetools-linux-6514223_latest.zip'
+# Cwd /home/ian/.buildozer/android/platform/android-sdk
+# Android SDK tools base installation done.
+# Recommended android's NDK version by p4a is: 19c
+# Android NDK is missing, downloading
+# Downloading https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip
+# Unpacking Android NDK
+# Run 'unzip -q /home/ian/.buildozer/android/platform/android-ndk-r19c-linux-x86_64.zip'
+# Cwd /home/ian/.buildozer/android/platform
+
+(seem to hang at this point - wait abotu 5 mins)
+
+# Cwd /home/ian/.buildozer/android/platform/android-sdk
+License android-sdk-license:            ] 10% Computing updates...              
+---------------------------------------
+Terms and Conditions
+
+This is the Android Software Development Kit License Agreement
+
+1. Introduction
+
+1.1 The Android Software Development Kit (referred to in the License Agreement as the "SDK" and specifically including the Android system files, packaged APIs, and Google APIs add-ons) is licensed to you subject to the terms of the License Agreement. The License Agreement forms a legally binding contract between you and Google in relation to your use of the SDK.
+
+14.7 The License Agreement, and your relationship with Google under the License Agreement, shall be governed by the laws of the State of California without regard to its conflict of laws provisions. You and Google agree to submit to the exclusive jurisdiction of the courts located within the county of Santa Clara, California to resolve any legal matter arising from the License Agreement. Notwithstanding this, you agree that Google shall still be allowed to apply for injunctive remedies (or an equivalent type of urgent legal relief) in any jurisdiction.
+
+
+January 16, 2019
+---------------------------------------
+Accept? (y/N): 
+
+[=======================================] 100% Unzipping... platform-tools/systr
+# Run '/home/ian/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --sdk_root=/home/ian/.buildozer/android/platform/android-sdk --update'
+# Cwd /home/ian/.buildozer/android/platform/android-sdk
+[=======================================] 100% Computing updates...             
+# Updating SDK build tools if necessary
+# build-tools folder not found /home/ian/.buildozer/android/platform/android-sdk/build-tools
+# Run '/home/ian/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --sdk_root=/home/ian/.buildozer/android/platform/android-sdk --list'
+# Cwd /home/ian/.buildozer/android/platform/android-sdk
+Installed packages:=====================] 100% Computing updates...             
+  Path           | Version | Description                | Location       
+  -------        | ------- | -------                    | -------        
+  platform-tools | 31.0.3  | Android SDK Platform-Tools | platform-tools/
+  tools          | 2.0.0   | Android SDK Tools 2        | tools/         
+
+Available Packages:
+  Path                                                                                     | Version      | Description                                                         
+  -------                                                                                  | -------      | -------                                                             
+  add-ons;addon-google_apis-google-15                                                      | 3            | Google APIs                                                         
+  add-ons;addon-google_apis-google-16                                                      | 4            | Google APIs                                                         
+  add-ons;addon-google_apis-google-17                                                      | 4            | Google APIs                                                         
+  add-ons;addon-google_apis-google-18                                                      | 4            | Google APIs                                                         
+  add-ons;addon-google_apis-google-19                                                      | 20           | Google APIs                                                         
+  add-ons;addon-google_apis-google-21                                                      | 1            | Google APIs                                                         
+  add-ons;addon-google_apis-google-22                                                      | 1            | Google APIs                                                         
+  add-ons;addon-google_apis-google-23                                                      | 1            | Google APIs                                                         
+  add-ons;addon-google_apis-google-24                                                      | 1            | Google APIs                                                         
+  build-tools;19.1.0                                                                       | 19.1.0       | Android SDK Build-Tools 19.1                                        
+  build-tools;20.0.0                                                                       | 20.0.0       | Android SDK Build-Tools 20                                          
+  build-tools;21.1.2                                                                       | 21.1.2       | Android SDK Build-Tools 21.1.2                                      
+  build-tools;22.0.1                                                                       | 22.0.1       | Android SDK Build-Tools 22.0.1                                      
+  build-tools;23.0.1                                                                       | 23.0.1       | Android SDK Build-Tools 23.0.1                                      
+  build-tools;23.0.2                                                                       | 23.0.2       | Android SDK Build-Tools 23.0.2                                      
+  build-tools;23.0.3                                                                       | 23.0.3       | Android SDK Build-Tools 23.0.3                                      
+  build-tools;24.0.0                                                                       | 24.0.0       | Android SDK Build-Tools 24                                          
+  build-tools;24.0.1                                                                       | 24.0.1       | Android SDK Build-Tools 24.0.1                                      
+  build-tools;24.0.2                                                                       | 24.0.2       | Android SDK Build-Tools 24.0.2                                      
+  build-tools;24.0.3                                                                       | 24.0.3       | Android SDK Build-Tools 24.0.3                                      
+  build-tools;25.0.0                                                                       | 25.0.0       | Android SDK Build-Tools 25                                          
+  build-tools;25.0.1                                                                       | 25.0.1       | Android SDK Build-Tools 25.0.1                                      
+  build-tools;25.0.2                                                                       | 25.0.2       | Android SDK Build-Tools 25.0.2                                      
+  build-tools;25.0.3                                                                       | 25.0.3       | Android SDK Build-Tools 25.0.3                                      
+  build-tools;26.0.0                                                                       | 26.0.0       | Android SDK Build-Tools 26                                          
+  build-tools;26.0.1                                                                       | 26.0.1       | Android SDK Build-Tools 26.0.1                                      
+  build-tools;26.0.2                                                                       | 26.0.2       | Android SDK Build-Tools 26.0.2                                      
+  build-tools;26.0.3                                                                       | 26.0.3       | Android SDK Build-Tools 26.0.3                                      
+  build-tools;27.0.0                                                                       | 27.0.0       | Android SDK Build-Tools 27                                          
+  build-tools;27.0.1                                                                       | 27.0.1       | Android SDK Build-Tools 27.0.1                                      
+  build-tools;27.0.2                                                                       | 27.0.2       | Android SDK Build-Tools 27.0.2                                      
+  build-tools;27.0.3                                                                       | 27.0.3       | Android SDK Build-Tools 27.0.3                                      
+  build-tools;28.0.0                                                                       | 28.0.0       | Android SDK Build-Tools 28                                          
+  build-tools;28.0.1                                                                       | 28.0.1       | Android SDK Build-Tools 28.0.1                                      
+  build-tools;28.0.2                                                                       | 28.0.2       | Android SDK Build-Tools 28.0.2                                      
+  build-tools;28.0.3                                                                       | 28.0.3       | Android SDK Build-Tools 28.0.3                                      
+  build-tools;29.0.0                                                                       | 29.0.0       | Android SDK Build-Tools 29                                          
+  build-tools;29.0.1                                                                       | 29.0.1       | Android SDK Build-Tools 29.0.1                                      
+  build-tools;29.0.2                                                                       | 29.0.2       | Android SDK Build-Tools 29.0.2                                      
+  build-tools;29.0.3                                                                       | 29.0.3       | Android SDK Build-Tools 29.0.3                                      
+  build-tools;30.0.0                                                                       | 30.0.0       | Android SDK Build-Tools 30                                          
+  build-tools;30.0.1                                                                       | 30.0.1       | Android SDK Build-Tools 30.0.1                                      
+  build-tools;30.0.2                                                                       | 30.0.2       | Android SDK Build-Tools 30.0.2                                      
+  build-tools;30.0.3                                                                       | 30.0.3       | Android SDK Build-Tools 30.0.3                                      
+  build-tools;31.0.0                                                                       | 31.0.0       | Android SDK Build-Tools 31                                          
+  cmake;3.10.2.4988404                                                                     | 3.10.2       | CMake 3.10.2.4988404                                                
+  cmake;3.18.1                                                                             | 3.18.1       | CMake 3.18.1                                                        
+  cmake;3.6.4111459                                                                        | 3.6.4111459  | CMake 3.6.4111459                                                   
+  cmdline-tools;1.0                                                                        | 1.0          | Android SDK Command-line Tools                                      
+  cmdline-tools;2.1                                                                        | 2.1          | Android SDK Command-line Tools                                      
+  cmdline-tools;3.0                                                                        | 3.0          | Android SDK Command-line Tools                                      
+  cmdline-tools;4.0                                                                        | 4.0          | Android SDK Command-line Tools                                      
+  cmdline-tools;5.0                                                                        | 5.0          | Android SDK Command-line Tools                                      
+  cmdline-tools;latest                                                                     | 5.0          | Android SDK Command-line Tools (latest)                             
+  emulator                                                                                 | 30.8.4       | Android Emulator                                                    
+  extras;android;m2repository                                                              | 47.0.0       | Android Support Repository                                          
+  extras;google;auto                                                                       | 1.1          | Android Auto Desktop Head Unit Emulator                             
+  extras;google;google_play_services                                                       | 49           | Google Play services                                                
+  extras;google;instantapps                                                                | 1.9.0        | Google Play Instant Development SDK                                 
+  extras;google;m2repository                                                               | 58           | Google Repository                                                   
+  extras;google;market_apk_expansion                                                       | 1            | Google Play APK Expansion library                                   
+  extras;google;market_licensing                                                           | 1            | Google Play Licensing Library                                       
+  extras;google;simulators                                                                 | 1            | Android Auto API Simulators                                         
+  extras;google;webdriver                                                                  | 2            | Google Web Driver                                                   
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0        | 1            | Solver for ConstraintLayout 1.0.0                                   
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha4 | 1            | com.android.support.constraint:constraint-layout-solver:1.0.0-alpha4
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha8 | 1            | Solver for ConstraintLayout 1.0.0-alpha8                            
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta1  | 1            | Solver for ConstraintLayout 1.0.0-beta1                             
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta2  | 1            | Solver for ConstraintLayout 1.0.0-beta2                             
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta3  | 1            | Solver for ConstraintLayout 1.0.0-beta3                             
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta4  | 1            | Solver for ConstraintLayout 1.0.0-beta4                             
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta5  | 1            | Solver for ConstraintLayout 1.0.0-beta5                             
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.1        | 1            | Solver for ConstraintLayout 1.0.1                                   
+  extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2        | 1            | Solver for ConstraintLayout 1.0.2                                   
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0               | 1            | ConstraintLayout for Android 1.0.0                                  
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha4        | 1            | com.android.support.constraint:constraint-layout:1.0.0-alpha4       
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha8        | 1            | ConstraintLayout for Android 1.0.0-alpha8                           
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta1         | 1            | ConstraintLayout for Android 1.0.0-beta1                            
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta2         | 1            | ConstraintLayout for Android 1.0.0-beta2                            
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta3         | 1            | ConstraintLayout for Android 1.0.0-beta3                            
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta4         | 1            | ConstraintLayout for Android 1.0.0-beta4                            
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5         | 1            | ConstraintLayout for Android 1.0.0-beta5                            
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1               | 1            | ConstraintLayout for Android 1.0.1                                  
+  extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2               | 1            | ConstraintLayout for Android 1.0.2                                  
+  ndk-bundle                                                                               | 22.1.7171670 | NDK                                                                 
+  ndk;16.1.4479499                                                                         | 16.1.4479499 | NDK (Side by side) 16.1.4479499                                     
+  ndk;17.2.4988734                                                                         | 17.2.4988734 | NDK (Side by side) 17.2.4988734                                     
+  ndk;18.1.5063045                                                                         | 18.1.5063045 | NDK (Side by side) 18.1.5063045                                     
+  ndk;19.2.5345600                                                                         | 19.2.5345600 | NDK (Side by side) 19.2.5345600                                     
+  ndk;20.0.5594570                                                                         | 20.0.5594570 | NDK (Side by side) 20.0.5594570                                     
+  ndk;20.1.5948944                                                                         | 20.1.5948944 | NDK (Side by side) 20.1.5948944                                     
+  ndk;21.0.6113669                                                                         | 21.0.6113669 | NDK (Side by side) 21.0.6113669                                     
+  ndk;21.1.6352462                                                                         | 21.1.6352462 | NDK (Side by side) 21.1.6352462                                     
+  ndk;21.2.6472646                                                                         | 21.2.6472646 | NDK (Side by side) 21.2.6472646                                     
+  ndk;21.3.6528147                                                                         | 21.3.6528147 | NDK (Side by side) 21.3.6528147                                     
+  ndk;21.4.7075529                                                                         | 21.4.7075529 | NDK (Side by side) 21.4.7075529                                     
+  ndk;22.0.7026061                                                                         | 22.0.7026061 | NDK (Side by side) 22.0.7026061                                     
+  ndk;22.1.7171670                                                                         | 22.1.7171670 | NDK (Side by side) 22.1.7171670                                     
+  ndk;23.0.7599858                                                                         | 23.0.7599858 | NDK (Side by side) 23.0.7599858                                     
+  patcher;v4                                                                               | 1            | SDK Patch Applier v4                                                
+  platform-tools                                                                           | 31.0.3       | Android SDK Platform-Tools                                          
+  platforms;android-10                                                                     | 2            | Android SDK Platform 10                                             
+  platforms;android-11                                                                     | 2            | Android SDK Platform 11                                             
+  platforms;android-12                                                                     | 3            | Android SDK Platform 12                                             
+  platforms;android-13                                                                     | 1            | Android SDK Platform 13                                             
+  platforms;android-14                                                                     | 4            | Android SDK Platform 14                                             
+  platforms;android-15                                                                     | 5            | Android SDK Platform 15                                             
+  platforms;android-16                                                                     | 5            | Android SDK Platform 16                                             
+  platforms;android-17                                                                     | 3            | Android SDK Platform 17                                             
+  platforms;android-18                                                                     | 3            | Android SDK Platform 18                                             
+  platforms;android-19                                                                     | 4            | Android SDK Platform 19                                             
+  platforms;android-20                                                                     | 2            | Android SDK Platform 20                                             
+  platforms;android-21                                                                     | 2            | Android SDK Platform 21                                             
+  platforms;android-22                                                                     | 2            | Android SDK Platform 22                                             
+  platforms;android-23                                                                     | 3            | Android SDK Platform 23                                             
+  platforms;android-24                                                                     | 2            | Android SDK Platform 24                                             
+  platforms;android-25                                                                     | 3            | Android SDK Platform 25                                             
+  platforms;android-26                                                                     | 2            | Android SDK Platform 26                                             
+  platforms;android-27                                                                     | 3            | Android SDK Platform 27                                             
+  platforms;android-28                                                                     | 6            | Android SDK Platform 28                                             
+  platforms;android-29                                                                     | 5            | Android SDK Platform 29                                             
+  platforms;android-30                                                                     | 3            | Android SDK Platform 30                                             
+  platforms;android-31                                                                     | 1            | Android SDK Platform 31                                             
+  platforms;android-7                                                                      | 3            | Android SDK Platform 7                                              
+  platforms;android-8                                                                      | 3            | Android SDK Platform 8                                              
+  platforms;android-9                                                                      | 2            | Android SDK Platform 9                                              
+  skiaparser;1                                                                             | 6            | Layout Inspector image server for API 29-30                         
+  skiaparser;2                                                                             | 3            | Layout Inspector image server for API S                             
+  sources;android-15                                                                       | 2            | Sources for Android 15                                              
+  sources;android-16                                                                       | 2            | Sources for Android 16                                              
+  sources;android-17                                                                       | 1            | Sources for Android 17                                              
+  sources;android-18                                                                       | 1            | Sources for Android 18                                              
+  sources;android-19                                                                       | 2            | Sources for Android 19                                              
+  sources;android-20                                                                       | 1            | Sources for Android 20                                              
+  sources;android-21                                                                       | 1            | Sources for Android 21                                              
+  sources;android-22                                                                       | 1            | Sources for Android 22                                              
+  sources;android-23                                                                       | 1            | Sources for Android 23                                              
+  sources;android-24                                                                       | 1            | Sources for Android 24                                              
+  sources;android-25                                                                       | 1            | Sources for Android 25                                              
+  sources;android-26                                                                       | 1            | Sources for Android 26                                              
+  sources;android-27                                                                       | 1            | Sources for Android 27                                              
+  sources;android-28                                                                       | 1            | Sources for Android 28                                              
+  sources;android-29                                                                       | 1            | Sources for Android 29                                              
+  sources;android-30                                                                       | 1            | Sources for Android 30                                              
+  system-images;android-10;default;armeabi-v7a                                             | 5            | ARM EABI v7a System Image                                           
+  system-images;android-10;default;x86                                                     | 5            | Intel x86 Atom System Image                                         
+  system-images;android-10;google_apis;armeabi-v7a                                         | 6            | Google APIs ARM EABI v7a System Image                               
+  system-images;android-10;google_apis;x86                                                 | 6            | Google APIs Intel x86 Atom System Image                             
+  system-images;android-14;default;armeabi-v7a                                             | 2            | ARM EABI v7a System Image                                           
+  system-images;android-15;default;armeabi-v7a                                             | 5            | ARM EABI v7a System Image                                           
+  system-images;android-15;default;x86                                                     | 7            | Intel x86 Atom System Image                                         
+  system-images;android-15;google_apis;armeabi-v7a                                         | 6            | Google APIs ARM EABI v7a System Image                               
+  system-images;android-15;google_apis;x86                                                 | 7            | Google APIs Intel x86 Atom System Image                             
+  system-images;android-16;default;armeabi-v7a                                             | 6            | ARM EABI v7a System Image                                           
+  system-images;android-16;default;mips                                                    | 1            | MIPS System Image                                                   
+  system-images;android-16;default;x86                                                     | 7            | Intel x86 Atom System Image                                         
+  system-images;android-16;google_apis;armeabi-v7a                                         | 6            | Google APIs ARM EABI v7a System Image                               
+  system-images;android-16;google_apis;x86                                                 | 7            | Google APIs Intel x86 Atom System Image                             
+  system-images;android-17;default;armeabi-v7a                                             | 6            | ARM EABI v7a System Image                                           
+  system-images;android-17;default;mips                                                    | 1            | MIPS System Image                                                   
+  system-images;android-17;default;x86                                                     | 7            | Intel x86 Atom System Image                                         
+  system-images;android-17;google_apis;armeabi-v7a                                         | 6            | Google APIs ARM EABI v7a System Image                               
+  system-images;android-17;google_apis;x86                                                 | 7            | Google APIs Intel x86 Atom System Image                             
+  system-images;android-18;default;armeabi-v7a                                             | 5            | ARM EABI v7a System Image                                           
+  system-images;android-18;default;x86                                                     | 4            | Intel x86 Atom System Image                                         
+  system-images;android-18;google_apis;armeabi-v7a                                         | 6            | Google APIs ARM EABI v7a System Image                               
+  system-images;android-18;google_apis;x86                                                 | 6            | Google APIs Intel x86 Atom System Image                             
+  system-images;android-19;default;armeabi-v7a                                             | 5            | ARM EABI v7a System Image                                           
+  system-images;android-19;default;x86                                                     | 6            | Intel x86 Atom System Image                                         
+  system-images;android-19;google_apis;armeabi-v7a                                         | 40           | Google APIs ARM EABI v7a System Image                               
+  system-images;android-19;google_apis;x86                                                 | 40           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-21;android-tv;armeabi-v7a                                          | 3            | Android TV ARM EABI v7a System Image                                
+  system-images;android-21;android-tv;x86                                                  | 3            | Android TV Intel x86 Atom System Image                              
+  system-images;android-21;default;armeabi-v7a                                             | 4            | ARM EABI v7a System Image                                           
+  system-images;android-21;default;x86                                                     | 5            | Intel x86 Atom System Image                                         
+  system-images;android-21;default;x86_64                                                  | 5            | Intel x86 Atom_64 System Image                                      
+  system-images;android-21;google_apis;armeabi-v7a                                         | 32           | Google APIs ARM EABI v7a System Image                               
+  system-images;android-21;google_apis;x86                                                 | 32           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-21;google_apis;x86_64                                              | 32           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-22;android-tv;x86                                                  | 3            | Android TV Intel x86 Atom System Image                              
+  system-images;android-22;default;armeabi-v7a                                             | 2            | ARM EABI v7a System Image                                           
+  system-images;android-22;default;x86                                                     | 6            | Intel x86 Atom System Image                                         
+  system-images;android-22;default;x86_64                                                  | 6            | Intel x86 Atom_64 System Image                                      
+  system-images;android-22;google_apis;armeabi-v7a                                         | 26           | Google APIs ARM EABI v7a System Image                               
+  system-images;android-22;google_apis;x86                                                 | 26           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-22;google_apis;x86_64                                              | 26           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-23;android-tv;armeabi-v7a                                          | 12           | Android TV ARM EABI v7a System Image                                
+  system-images;android-23;android-tv;x86                                                  | 21           | Android TV Intel x86 Atom System Image                              
+  system-images;android-23;android-wear;armeabi-v7a                                        | 6            | Android Wear ARM EABI v7a System Image                              
+  system-images;android-23;android-wear;x86                                                | 6            | Android Wear Intel x86 Atom System Image                            
+  system-images;android-23;default;armeabi-v7a                                             | 6            | ARM EABI v7a System Image                                           
+  system-images;android-23;default;x86                                                     | 10           | Intel x86 Atom System Image                                         
+  system-images;android-23;default;x86_64                                                  | 10           | Intel x86 Atom_64 System Image                                      
+  system-images;android-23;google_apis;armeabi-v7a                                         | 33           | Google APIs ARM EABI v7a System Image                               
+  system-images;android-23;google_apis;x86                                                 | 33           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-23;google_apis;x86_64                                              | 33           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-24;android-tv;x86                                                  | 22           | Android TV Intel x86 Atom System Image                              
+  system-images;android-24;default;arm64-v8a                                               | 7            | ARM 64 v8a System Image                                             
+  system-images;android-24;default;armeabi-v7a                                             | 7            | ARM EABI v7a System Image                                           
+  system-images;android-24;default;x86                                                     | 8            | Intel x86 Atom System Image                                         
+  system-images;android-24;default;x86_64                                                  | 8            | Intel x86 Atom_64 System Image                                      
+  system-images;android-24;google_apis;arm64-v8a                                           | 27           | Google APIs ARM 64 v8a System Image                                 
+  system-images;android-24;google_apis;x86                                                 | 27           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-24;google_apis;x86_64                                              | 27           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-24;google_apis_playstore;x86                                       | 19           | Google Play Intel x86 Atom System Image                             
+  system-images;android-25;android-tv;x86                                                  | 16           | Android TV Intel x86 Atom System Image                              
+  system-images;android-25;android-wear-cn;armeabi-v7a                                     | 4            | China version of Android Wear ARM EABI v7a System Image             
+  system-images;android-25;android-wear-cn;x86                                             | 4            | China version of Android Wear Intel x86 Atom System Image           
+  system-images;android-25;android-wear;armeabi-v7a                                        | 3            | Android Wear ARM EABI v7a System Image                              
+  system-images;android-25;android-wear;x86                                                | 3            | Android Wear Intel x86 Atom System Image                            
+  system-images;android-25;default;x86                                                     | 1            | Intel x86 Atom System Image                                         
+  system-images;android-25;default;x86_64                                                  | 1            | Intel x86 Atom_64 System Image                                      
+  system-images;android-25;google_apis;arm64-v8a                                           | 18           | Google APIs ARM 64 v8a System Image                                 
+  system-images;android-25;google_apis;armeabi-v7a                                         | 18           | Google APIs ARM EABI v7a System Image                               
+  system-images;android-25;google_apis;x86                                                 | 18           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-25;google_apis;x86_64                                              | 18           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-25;google_apis_playstore;x86                                       | 9            | Google Play Intel x86 Atom System Image                             
+  system-images;android-26;android-tv;x86                                                  | 14           | Android TV Intel x86 Atom System Image                              
+  system-images;android-26;android-wear-cn;x86                                             | 4            | China version of Android Wear Intel x86 Atom System Image           
+  system-images;android-26;android-wear;x86                                                | 4            | Android Wear Intel x86 Atom System Image                            
+  system-images;android-26;default;x86                                                     | 1            | Intel x86 Atom System Image                                         
+  system-images;android-26;default;x86_64                                                  | 1            | Intel x86 Atom_64 System Image                                      
+  system-images;android-26;google_apis;x86                                                 | 16           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-26;google_apis;x86_64                                              | 16           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-26;google_apis_playstore;x86                                       | 7            | Google Play Intel x86 Atom System Image                             
+  system-images;android-27;android-tv;x86                                                  | 9            | Android TV Intel x86 Atom System Image                              
+  system-images;android-27;default;x86                                                     | 1            | Intel x86 Atom System Image                                         
+  system-images;android-27;default;x86_64                                                  | 1            | Intel x86 Atom_64 System Image                                      
+  system-images;android-27;google_apis;x86                                                 | 11           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-27;google_apis_playstore;x86                                       | 3            | Google Play Intel x86 Atom System Image                             
+  system-images;android-28;android-tv;x86                                                  | 10           | Android TV Intel x86 Atom System Image                              
+  system-images;android-28;android-wear-cn;x86                                             | 6            | China version of Wear OS Intel x86 Atom System Image                
+  system-images;android-28;android-wear;x86                                                | 6            | Wear OS Intel x86 Atom System Image                                 
+  system-images;android-28;default;x86                                                     | 4            | Intel x86 Atom System Image                                         
+  system-images;android-28;default;x86_64                                                  | 4            | Intel x86 Atom_64 System Image                                      
+  system-images;android-28;google_apis;x86                                                 | 12           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-28;google_apis;x86_64                                              | 11           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-28;google_apis_playstore;x86                                       | 9            | Google Play Intel x86 Atom System Image                             
+  system-images;android-28;google_apis_playstore;x86_64                                    | 8            | Google Play Intel x86 Atom_64 System Image                          
+  system-images;android-29;android-tv;x86                                                  | 3            | Android TV Intel x86 Atom System Image                              
+  system-images;android-29;default;x86                                                     | 8            | Intel x86 Atom System Image                                         
+  system-images;android-29;default;x86_64                                                  | 8            | Intel x86 Atom_64 System Image                                      
+  system-images;android-29;google_apis;arm64-v8a                                           | 12           | Google APIs ARM 64 v8a System Image                                 
+  system-images;android-29;google_apis;x86                                                 | 12           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-29;google_apis;x86_64                                              | 12           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-29;google_apis_playstore;arm64-v8a                                 | 9            | Google Play ARM 64 v8a System Image                                 
+  system-images;android-29;google_apis_playstore;x86                                       | 8            | Google Play Intel x86 Atom System Image                             
+  system-images;android-29;google_apis_playstore;x86_64                                    | 8            | Google Play Intel x86 Atom_64 System Image                          
+  system-images;android-30;android-tv;x86                                                  | 3            | Android TV Intel x86 Atom System Image                              
+  system-images;android-30;android-wear-cn;x86                                             | 4            | China version of Wear OS - Preview Intel x86 Atom System Image      
+  system-images;android-30;android-wear;x86                                                | 4            | Wear OS - Preview Intel x86 Atom System Image                       
+  system-images;android-30;google-tv;x86                                                   | 3            | Google TV Intel x86 Atom System Image                               
+  system-images;android-30;google_apis;arm64-v8a                                           | 11           | Google APIs ARM 64 v8a System Image                                 
+  system-images;android-30;google_apis;x86                                                 | 10           | Google APIs Intel x86 Atom System Image                             
+  system-images;android-30;google_apis;x86_64                                              | 10           | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-30;google_apis_playstore;arm64-v8a                                 | 10           | Google Play ARM 64 v8a System Image                                 
+  system-images;android-30;google_apis_playstore;x86                                       | 9            | Google Play Intel x86 Atom System Image                             
+  system-images;android-30;google_apis_playstore;x86_64                                    | 10           | Google Play Intel x86 Atom_64 System Image                          
+  system-images;android-31;google_apis;arm64-v8a                                           | 8            | Google APIs ARM 64 v8a System Image                                 
+  system-images;android-31;google_apis;x86_64                                              | 8            | Google APIs Intel x86 Atom_64 System Image                          
+  system-images;android-31;google_apis_playstore;arm64-v8a                                 | 8            | Google Play ARM 64 v8a System Image                                 
+  system-images;android-31;google_apis_playstore;x86_64                                    | 8            | Google Play Intel x86 Atom_64 System Image                          
+
+Available Updates:
+  ID      | Installed | Available
+  ------- | -------   | -------  
+
+# Run '/home/ian/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --sdk_root=/home/ian/.buildozer/android/platform/android-sdk "build-tools;31.0.0"'
+# Cwd /home/ian/.buildozer/android/platform/android-sdk
+[=======================================] 100% Unzipping... android-12/lib64/lib
+# Check that aidl can be executed
+# Search for Aidl
+# Run '/home/ian/.buildozer/android/platform/android-sdk/build-tools/31.0.0/aidl'
+# Cwd None
+# Downloading platform api target if necessary
+# Run '/home/ian/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --sdk_root=/home/ian/.buildozer/android/platform/android-sdk "platforms;android-27"'
+# Cwd /home/ian/.buildozer/android/platform/android-sdk
+[=======================================] 100% Unzipping... android-8.1.0/build.
+# Android packages installation done.
+# Read available permissions from api-versions.xml
+# Check application requirements
+# Check garden requirements
+# Compile platform
+# Run '/home/ian/kivy_venv/bin/python -m pythonforandroid.toolchain create --dist_name=myapp --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a --copy-libs --color=always --storage-dir="/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a" --ndk-api=21'
+# Cwd /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Will compile for the following archs: armeabi-v7a
+[INFO]:    Found Android API target in $ANDROIDAPI: 27
+[INFO]:    Available Android APIs are (27)
+[INFO]:    Requested API target 27 is available, continuing.
+[INFO]:    Found NDK dir in $ANDROIDNDK: /home/ian/.buildozer/android/platform/android-ndk-r19c
+[INFO]:    Found NDK version 19c
+[INFO]:    Getting NDK API version (i.e. minimum supported API) from user argument
+[INFO]:    ccache is missing, the build will not be optimized in the future.
+/home/ian/kivy_venv/bin/python3: No module named cython
+[WARNING]: Cython for python3 missing. If you are building for  a python 3 target (which is the default) then THINGS WILL BREAK.
+[INFO]:    Found the following toolchain versions: ['4.9']
+[INFO]:    Picking the latest gcc toolchain, here 4.9
+[INFO]:    No existing dists meet the given requirements!
+[INFO]:    No dist exists that meets your requirements, so one will be built.
+[INFO]:    Found a single valid recipe set: ['hostpython3', 'libffi', 'openssl', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'sqlite3', 'python3', 'sdl2', 'setuptools', 'six', 'pyjnius', 'android', 'kivy']
+[INFO]:    The selected bootstrap is sdl2
+[INFO]:    # Creating dist with sdl2 bootstrap
+[INFO]:    Dist will have name myapp and requirements (python3, kivy)
+[INFO]:    Dist contains the following requirements as recipes: ['hostpython3', 'libffi', 'openssl', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'sqlite3', 'python3', 'sdl2', 'setuptools', 'six', 'pyjnius', 'android', 'kivy']
+[INFO]:    Dist will also contain modules (certifi) installed from pip
+[INFO]:    Dist will be build in mode debug
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/bootstrap_builds/sdl2
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Recipe build order is ['hostpython3', 'libffi', 'openssl', 'sdl2_image', 'sdl2_mixer', 'sdl2_ttf', 'sqlite3', 'python3', 'sdl2', 'setuptools', 'six', 'pyjnius', 'android', 'kivy']
+[INFO]:    The requirements (certifi) were not found as recipes, they will be installed with pip.
+[INFO]:    # Downloading recipes 
+[INFO]:    Downloading hostpython3
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/...(and 20 more)
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/hostpython3
+[INFO]:    -> running basename https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz
+[INFO]:    -> running rm -f .mark-Python-3.8.9.tgz                                                                     
+[INFO]:    Downloading hostpython3 from https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz
+[INFO]:    -> running touch .mark-Python-3.8.9.tgz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading libffi
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/libffi
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/libffi
+[INFO]:    -> running basename https://github.com/libffi/libffi/archive/v3.3.tar.gz
+[INFO]:    -> running rm -f .mark-v3.3.tar.gz                                                                          
+[INFO]:    Downloading libffi from https://github.com/libffi/libffi/archive/v3.3.tar.gz
+[INFO]:    -> running touch .mark-v3.3.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading openssl
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/openssl
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/openssl
+[INFO]:    -> running basename https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+[INFO]:    -> running rm -f .mark-openssl-1.1.1k.tar.gz                                                                
+[INFO]:    Downloading openssl from https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+[INFO]:    -> running touch .mark-openssl-1.1.1k.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading sdl2_image
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/...(and 19 more)
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sdl2_image
+[INFO]:    -> running basename https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz
+[INFO]:    -> running rm -f .mark-SDL2_image-2.0.4.tar.gz                                                              
+[INFO]:    Downloading sdl2_image from https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz
+[INFO]:    -> running touch .mark-SDL2_image-2.0.4.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading sdl2_mixer
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/...(and 19 more)
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sdl2_mixer
+[INFO]:    -> running basename https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
+[INFO]:    -> running rm -f .mark-SDL2_mixer-2.0.4.tar.gz                                                              
+[INFO]:    Downloading sdl2_mixer from https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
+[INFO]:    -> running touch .mark-SDL2_mixer-2.0.4.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading sdl2_ttf
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sdl2_ttf
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sdl2_ttf
+[INFO]:    -> running basename https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+[INFO]:    -> running rm -f .mark-SDL2_ttf-2.0.15.tar.gz                                                               
+[INFO]:    Downloading sdl2_ttf from https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+[INFO]:    -> running touch .mark-SDL2_ttf-2.0.15.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading sqlite3
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sqlite3
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sqlite3
+[INFO]:    -> running basename https://www.sqlite.org/2021/sqlite-amalgamation-3350500.zip
+[INFO]:    -> running rm -f .mark-sqlite-amalgamation-3350500.zip                                                      
+[INFO]:    Downloading sqlite3 from https://www.sqlite.org/2021/sqlite-amalgamation-3350500.zip
+[INFO]:    -> running touch .mark-sqlite-amalgamation-3350500.zip
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading python3
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/python3
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/python3
+[INFO]:    -> running basename https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz
+[INFO]:    -> running rm -f .mark-Python-3.8.9.tgz                                                                     
+[INFO]:    Downloading python3 from https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz
+[INFO]:    -> running touch .mark-Python-3.8.9.tgz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading sdl2
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sdl2
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/sdl2
+[INFO]:    -> running basename https://www.libsdl.org/release/SDL2-2.0.9.tar.gz
+[INFO]:    -> running rm -f .mark-SDL2-2.0.9.tar.gz                                                                    
+[INFO]:    Downloading sdl2 from https://www.libsdl.org/release/SDL2-2.0.9.tar.gz
+[INFO]:    -> running touch .mark-SDL2-2.0.9.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading setuptools
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/...(and 19 more)
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/setuptools
+[INFO]:    -> running basename https://pypi.python.org/packages/source/s/setuptools/setuptools-51.3.3.tar.gz
+[INFO]:    -> running rm -f .mark-setuptools-51.3.3.tar.gz                                                             
+[INFO]:    Downloading setuptools from https://pypi.python.org/packages/source/s/setuptools/setuptools-51.3.3.tar.gz
+[INFO]:    -> running touch .mark-setuptools-51.3.3.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading six
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/six
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/six
+[INFO]:    -> running basename https://pypi.python.org/packages/source/s/six/six-1.15.0.tar.gz
+[INFO]:    -> running rm -f .mark-six-1.15.0.tar.gz                                                                    
+[INFO]:    Downloading six from https://pypi.python.org/packages/source/s/six/six-1.15.0.tar.gz
+[INFO]:    -> running touch .mark-six-1.15.0.tar.gz
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading pyjnius
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/pyjnius
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/pyjnius
+[INFO]:    -> running basename https://github.com/kivy/pyjnius/archive/1.3.0.zip
+[INFO]:    -> running rm -f .mark-1.3.0.zip                                                                            
+[INFO]:    Downloading pyjnius from https://github.com/kivy/pyjnius/archive/1.3.0.zip
+[INFO]:    -> running touch .mark-1.3.0.zip
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Downloading android
+[INFO]:    Skipping android download as no URL is set
+[INFO]:    Downloading kivy
+[INFO]:    -> running mkdir -p /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/kivy
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/packages/kivy
+[INFO]:    -> running basename https://github.com/kivy/kivy/archive/2.0.0.zip
+[INFO]:    -> running rm -f .mark-2.0.0.zip                                                                            
+[INFO]:    Downloading kivy from https://github.com/kivy/kivy/archive/2.0.0.zip
+[INFO]:    -> running touch .mark-2.0.0.zip
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    # Building all recipes for arch armeabi-v7a
+[INFO]:    # Unpacking recipes
+[INFO]:    Unpacking hostpython3 for armeabi-v7a
+[INFO]:    -> running basename https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/hostpython3/desktop
+[INFO]:    -> running mv Python-3.8.9 /home/ian/kivy/.buildozer/android/platform/build-armea...(and 57 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking libffi for armeabi-v7a
+[INFO]:    -> running basename https://github.com/libffi/libffi/archive/v3.3.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv libffi-3.3 /home/ian/kivy/.buildozer/android/platform/build-armeabi...(and 64 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking openssl for armeabi-v7a
+[INFO]:    -> running basename https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv openssl-1.1.1k /home/ian/kivy/.buildozer/android/platform/build-arm...(and 73 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking sdl2_image for armeabi-v7a
+[INFO]:    -> running basename https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/bootstrap_builds/sdl2/jni
+[INFO]:    -> running mv SDL2_image-2.0.4 /home/ian/kivy/.buildozer/android/platform/build-a...(and 53 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking sdl2_mixer for armeabi-v7a
+[INFO]:    -> running basename https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/bootstrap_builds/sdl2/jni
+[INFO]:    -> running mv SDL2_mixer-2.0.4 /home/ian/kivy/.buildozer/android/platform/build-a...(and 53 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking sdl2_ttf for armeabi-v7a
+[INFO]:    -> running basename https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/bootstrap_builds/sdl2/jni
+[INFO]:    -> running mv SDL2_ttf-2.0.15 /home/ian/kivy/.buildozer/android/platform/build-ar...(and 50 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking sqlite3 for armeabi-v7a
+[INFO]:    -> running basename https://www.sqlite.org/2021/sqlite-amalgamation-3350500.zip
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv sqlite-amalgamation-3350500 /home/ian/kivy/.buildozer/android/platf...(and 83 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking python3 for armeabi-v7a
+[INFO]:    -> running basename https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tgz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv Python-3.8.9 /home/ian/kivy/.buildozer/android/platform/build-armea...(and 68 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking sdl2 for armeabi-v7a
+[INFO]:    -> running basename https://www.libsdl.org/release/SDL2-2.0.9.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/bootstrap_builds/sdl2/jni
+[INFO]:    -> running mv SDL2-2.0.9 /home/ian/kivy/.buildozer/android/platform/build-armeabi...(and 40 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking setuptools for armeabi-v7a
+[INFO]:    -> running basename https://pypi.python.org/packages/source/s/setuptools/setuptools-51.3.3.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/setuptools/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv setuptools-51.3.3 /home/ian/kivy/.buildozer/android/platform/build-...(and 79 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking six for armeabi-v7a
+[INFO]:    -> running basename https://pypi.python.org/packages/source/s/six/six-1.15.0.tar.gz
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/six/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv six-1.15.0 /home/ian/kivy/.buildozer/android/platform/build-armeabi...(and 58 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Unpacking pyjnius for armeabi-v7a
+[INFO]:    -> running basename https://github.com/kivy/pyjnius/archive/1.3.0.zip
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/pyjnius-sdl2/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv pyjnius-1.3.0 /home/ian/kivy/.buildozer/android/platform/build-arme...(and 74 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    -> running rm -rf /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bu...(and 64 more)
+[INFO]:    -> running cp -a /home/ian/kivy/.buildozer/android/platform/python-for-android/py...(and 162 more)
+[INFO]:    Unpacking kivy for armeabi-v7a
+[INFO]:    -> running basename https://github.com/kivy/kivy/archive/2.0.0.zip
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/kivy/armeabi-v7a__ndk_target_21
+[INFO]:    -> running mv kivy-2.0.0 /home/ian/kivy/.buildozer/android/platform/build-armeabi...(and 60 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    # Prebuilding recipes
+[INFO]:    Prebuilding hostpython3 for armeabi-v7a
+[INFO]:    hostpython3 has no prebuild_armeabi_v7a, skipping
+[INFO]:    Applying patches for hostpython3[armeabi-v7a]
+[INFO]:    Applying patch patches/pyconfig_detection.patch
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 192 more)
+[INFO]:    -> running touch /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bui...(and 56 more)           
+[INFO]:    Prebuilding libffi for armeabi-v7a
+[INFO]:    libffi has no prebuild_armeabi_v7a, skipping
+[INFO]:    Applying patches for libffi[armeabi-v7a]
+[INFO]:    Applying patch remove-version-info.patch
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 189 more)
+[INFO]:    -> running touch /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bui...(and 65 more)           
+[INFO]:    Prebuilding openssl for armeabi-v7a
+[INFO]:    openssl has no prebuild_armeabi_v7a, skipping
+[INFO]:    Prebuilding sdl2_image for armeabi-v7a
+[INFO]:    sdl2_image has no prebuild_armeabi_v7a, skipping
+[INFO]:    Applying patches for sdl2_image[armeabi-v7a]
+[INFO]:    Applying patch toggle_jpg_png_webp.patch
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 176 more)
+[INFO]:    Applying patch extra_cflags.patch                                                                           
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 169 more)
+[INFO]:    -> running touch /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bui...(and 48 more)           
+[INFO]:    Prebuilding sdl2_mixer for armeabi-v7a
+[INFO]:    sdl2_mixer has no prebuild_armeabi_v7a, skipping
+[INFO]:    Applying patches for sdl2_mixer[armeabi-v7a]
+[INFO]:    Applying patch toggle_modplug_mikmod_smpeg_ogg.patch
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 188 more)
+[INFO]:    -> running touch /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bui...(and 48 more)           
+[INFO]:    Prebuilding sdl2_ttf for armeabi-v7a
+[INFO]:    sdl2_ttf has no prebuild_armeabi_v7a, skipping
+[INFO]:    Prebuilding sqlite3 for armeabi-v7a
+[INFO]:    sqlite3 has no prebuild_armeabi_v7a, skipping
+[INFO]:    Prebuilding python3 for armeabi-v7a
+[INFO]:    python3 has no prebuild_armeabi_v7a, skipping
+[INFO]:    Applying patches for python3[armeabi-v7a]
+[INFO]:    Applying patch patches/pyconfig_detection.patch
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 199 more)
+[INFO]:    Applying patch patches/reproducible-buildinfo.diff                                                          
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 202 more)
+[INFO]:    Applying patch patches/py3.8.1.patch                                                                        
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 188 more)
+[INFO]:    -> running touch /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bui...(and 67 more)           
+[INFO]:    Prebuilding sdl2 for armeabi-v7a
+[INFO]:    sdl2 has no prebuild_armeabi_v7a, skipping
+[INFO]:    Prebuilding setuptools for armeabi-v7a
+[INFO]:    setuptools has no prebuild_armeabi_v7a, skipping
+[INFO]:    Prebuilding six for armeabi-v7a
+[INFO]:    six has no prebuild_armeabi_v7a, skipping
+[INFO]:    Prebuilding pyjnius for armeabi-v7a
+[INFO]:    pyjnius has no prebuild_armeabi_v7a, skipping
+[INFO]:    Applying patches for pyjnius[armeabi-v7a]
+[INFO]:    Applying patch sdl2_jnienv_getter.patch
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 196 more)
+[INFO]:    -> running touch /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/bui...(and 72 more)           
+[INFO]:    Prebuilding android for armeabi-v7a
+[INFO]:    android has no prebuild_armeabi_v7a, skipping
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/android-sdl2/armeabi-v7a__ndk_target_21/android
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Prebuilding kivy for armeabi-v7a
+[INFO]:    kivy has no prebuild_armeabi_v7a, skipping
+[INFO]:    # Building recipes
+[INFO]:    Building hostpython3 for armeabi-v7a
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build
+[INFO]:    -> running configure
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3
+[INFO]:    -> running make -j 4 -C /home/ian/kivy/.buildozer/android/platform/build-armeabi-...(and 67 more)
+[INFO]:    -> running cp /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/...(and 197 more)          
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Building libffi for armeabi-v7a
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/libffi/armeabi-v7a__ndk_target_21/libffi
+[INFO]:    -> running autogen.sh
+[INFO]:    -> running autoreconf -vif                                                                                  
+[INFO]:    -> running configure --host=arm-linux-androideabi --prefix=/home/ian/kivy/.buildo...(and 133 more)          
+[INFO]:    -> running make -j 4 libffi.la                                                                              
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    -> running cp /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/...(and 171 more)
+[INFO]:    Building openssl for armeabi-v7a
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1
+[INFO]:    -> running perl Configure shared no-dso no-asm android-arm -D__ANDROID_API__=21
+[INFO]:    Applying patch disable-sover.patch                                                                          
+[INFO]:    -> running patch -t -d /home/ian/kivy/.buildozer/android/platform/build-armeabi-v...(and 189 more)
+[INFO]:    -> running make build_libs                                                                                  
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    -> running cp /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/...(and 315 more)
+[INFO]:    Building sdl2_image for armeabi-v7a
+[INFO]:    Building sdl2_mixer for armeabi-v7a
+[INFO]:    Building sdl2_ttf for armeabi-v7a
+[INFO]:    Building sqlite3 for armeabi-v7a
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/sqlite3/armeabi-v7a__ndk_target_21/sqlite3
+[INFO]:    -> running ndk-build V=1 NDK_DEBUG=1 APP_PLATFORM=android-21 APP_ABI=armeabi-v7a
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    Building python3 for armeabi-v7a
+[WARNING]: lld not found, linking without it. Consider installing lld if linker errors occur.
+[INFO]:    Activating flags for sqlite3
+[INFO]:    Activating flags for libffi
+[INFO]:    Activating flags for openssl
+[INFO]:    Activating flags for android's zlib
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/android-build
+[INFO]:    -> running configure --host=arm-linux-androideabi --build=x86_64-pc-linux-gnu --e...(and 347 more)
+[INFO]:    -> running make all -j 4 INSTSONAME=libpython3.8.so                                                         
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    Building sdl2 for armeabi-v7a
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/bootstrap_builds/sdl2/jni
+[INFO]:    -> running ndk-build V=1 NDK_DEBUG=1
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    Building setuptools for armeabi-v7a
+[INFO]:    setuptools apparently isn't already in site-packages
+[INFO]:    Installing setuptools into site-packages
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/setuptools/armeabi-v7a__ndk_target_21/setuptools
+[INFO]:    -> running python3 setup.py install -O2 --root=/home/ian/kivy/.buildozer/android/...(and 70 more)
+[INFO]:    -> running python3 setup.py install -O2 --root=/home/ian/kivy/.buildozer/android/...(and 122 more)          
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    Building six for armeabi-v7a
+[INFO]:    six apparently isn't already in site-packages
+[INFO]:    Installing six into site-packages
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/six/armeabi-v7a__ndk_target_21/six
+[INFO]:    -> running python3 setup.py install -O2 --root=/home/ian/kivy/.buildozer/android/...(and 70 more)
+[INFO]:    <- directory context /home/ian/kivy/.buildozer/android/platform/python-for-android                          
+[INFO]:    Building pyjnius for armeabi-v7a
+[INFO]:    jnius apparently isn't already in site-packages
+[INFO]:    Cythonizing anything necessary in pyjnius
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/pyjnius-sdl2/armeabi-v7a__ndk_target_21/pyjnius
+[INFO]:    -> running python3 -c import sys; print(sys.path)
+[INFO]:    Trying first build of pyjnius to get cython files: this is expected to fail                                 
+[INFO]:    -> running python3 setup.py build_ext -v
+           working: error: command '/home/ian/.buildozer/android/platform/android-ndk-r19c/toolchains...(and 64 more)  Exception in thread background thread for pid 77130:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 1683, in wrap
+    fn(*rgs, **kwargs)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 2662, in background_thread
+    handle_exit_code(exit_code)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 2349, in fn
+    return self.command.handle_command_exit_code(exit_code)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 905, in handle_command_exit_code
+    raise exc
+sh.ErrorReturnCode_1: 
+
+  RAN: /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3 setup.py build_ext -v
+
+  STDOUT:
+warning: [options] bootstrap class path not set in conjunction with -source 1.7
+1 warning
+running build_ext
+building 'jnius' extension
+creating build
+creating build/temp.linux-x86_64-3.8
+creating build/temp.linux-x86_64-3.8/jnius
+/home/ian/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -target armv7a-linux-androideabi21 -fomit-frame-pointer -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -mthumb -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -target armv7a-linux-androideabi21 -fomit-frame-pointer -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -mthumb -fPIC -I/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/python3/armeabi-v7a__ndk_target_21/python3/Include -DANDROID -D__ANDROID_API__=21 -I/home/ian/.buildozer/android/platform/android-ndk-r19c/sysroot/usr/include/arm-linux-androideabi -I/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/python-installs/myapp/include/python3.8 -fPIC -I/usr/lib/jvm/java-8-openjdk-amd64/include -I/usr/lib/jvm/java-8-openjdk-amd64/include/linux -I/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/Include -I/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build -c jnius/jnius.c -o build/temp.linux-x86_64-3.8/jnius/jnius.o
+clang: error: no such file or directory: 'jnius/jnius.c'
+clang: error: no input files
+error: command '/home/ian/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang' failed with exit status 1
+
+
+  STDERR:
+
+[INFO]:    pyjnius first build failed (as expected)                                                                    
+[INFO]:    Running cython where appropriate
+[INFO]:    Cythonize jnius/jnius.pyx
+[INFO]:    -> running python3 -cimport sys; from Cython.Compiler.Main import setuptools_main...(and 48 more)
+
+           working: ModuleNotFoundError: No module named 'Cython'                                                      Exception in thread background thread for pid 77159:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 1683, in wrap
+    fn(*rgs, **kwargs)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 2662, in background_thread
+    handle_exit_code(exit_code)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 2349, in fn
+    return self.command.handle_command_exit_code(exit_code)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 905, in handle_command_exit_code
+    raise exc
+sh.ErrorReturnCode_1: 
+
+  RAN: /home/ian/kivy_venv/bin/python3 '-cimport sys; from Cython.Compiler.Main import setuptools_main; sys.exit(setuptools_main());' ./jnius/jnius.pyx
+
+  STDOUT:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'Cython'
+
+
+  STDERR:
+
+Traceback (most recent call last):                                                                                     
+  File "/usr/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/toolchain.py", line 1276, in <module>
+    main()
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/entrypoints.py", line 18, in main
+    ToolchainCL()
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/toolchain.py", line 725, in __init__
+    getattr(self, command)(args)
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/toolchain.py", line 153, in wrapper_func
+    build_dist_from_args(ctx, dist, args)
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/toolchain.py", line 212, in build_dist_from_args
+    build_recipes(build_order, python_modules, ctx,
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/build.py", line 580, in build_recipes
+    recipe.build_arch(arch)
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/recipe.py", line 1059, in build_arch
+    self.build_cython_components(arch)
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/recipe.py", line 1084, in build_cython_components
+    self.cythonize_build(env=env)
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/recipe.py", line 1132, in cythonize_build
+    self.cythonize_file(env, build_dir, join(root, filename))
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/recipe.py", line 1121, in cythonize_file
+    shprint(python_command, "-c"
+  File "/home/ian/kivy/.buildozer/android/platform/python-for-android/pythonforandroid/logger.py", line 167, in shprint
+    for line in output:
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 953, in next
+    self.wait()
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 879, in wait
+    self.handle_command_exit_code(exit_code)
+  File "/home/ian/kivy_venv/lib/python3.8/site-packages/sh.py", line 905, in handle_command_exit_code
+    raise exc
+sh.ErrorReturnCode_1: 
+
+  RAN: /home/ian/kivy_venv/bin/python3 '-cimport sys; from Cython.Compiler.Main import setuptools_main; sys.exit(setuptools_main());' ./jnius/jnius.pyx
+
+  STDOUT:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'Cython'
+
+
+  STDERR:
+
+# Command failed: /home/ian/kivy_venv/bin/python -m pythonforandroid.toolchain create --dist_name=myapp --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a --copy-libs --color=always --storage-dir="/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a" --ndk-api=21
+# ENVIRONMENT:
+#     SHELL = '/bin/bash'
+#     SESSION_MANAGER = 'local/ian:@/tmp/.ICE-unix/1530,unix/ian:/tmp/.ICE-unix/1530'
+#     WINDOWID = '75497478'
+#     QT_ACCESSIBILITY = '1'
+#     COLORTERM = 'truecolor'
+#     XDG_CONFIG_DIRS = '/etc/xdg/xdg-mate:/etc/xdg'
+#     XDG_SESSION_PATH = '/org/freedesktop/DisplayManager/Session0'
+#     LANGUAGE = 'en_NZ:en'
+#     SSH_AUTH_SOCK = '/run/user/1000/keyring/ssh'
+#     DESKTOP_SESSION = 'mate'
+#     SSH_AGENT_PID = '1655'
+#     GTK_MODULES = 'appmenu-gtk-module:gail:atk-bridge:canberra-gtk-module'
+#     XDG_SEAT = 'seat0'
+#     MATE_DESKTOP_SESSION_ID = 'this-is-deprecated'
+#     PWD = '/home/ian/kivy'
+#     LOGNAME = 'ian'
+#     XDG_SESSION_DESKTOP = 'mate'
+#     QT_QPA_PLATFORMTHEME = 'gtk2'
+#     XDG_SESSION_TYPE = 'x11'
+#     GPG_AGENT_INFO = '/run/user/1000/gnupg/S.gpg-agent:0:1'
+#     XAUTHORITY = '/home/ian/.Xauthority'
+#     XDG_GREETER_DATA_DIR = '/var/lib/lightdm-data/ian'
+#     GDM_LANG = 'en_US'
+#     HOME = '/home/ian'
+#     LANG = 'en_NZ.UTF-8'
+#     LS_COLORS = 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+#     XDG_CURRENT_DESKTOP = 'MATE'
+#     VIRTUAL_ENV = '/home/ian/kivy_venv'
+#     VTE_VERSION = '6003'
+#     XDG_SEAT_PATH = '/org/freedesktop/DisplayManager/Seat0'
+#     LESSCLOSE = '/usr/bin/lesspipe %s %s'
+#     XDG_SESSION_CLASS = 'user'
+#     TERM = 'xterm-256color'
+#     GTK_OVERLAY_SCROLLING = '0'
+#     LESSOPEN = '| /usr/bin/lesspipe %s'
+#     LIBVIRT_DEFAULT_URI = 'qemu:///system'
+#     USER = 'ian'
+#     DISPLAY = ':0'
+#     SHLVL = '1'
+#     XDG_VTNR = '7'
+#     UBUNTU_MENUPROXY = '1'
+#     XDG_SESSION_ID = 'c2'
+#     XDG_RUNTIME_DIR = '/run/user/1000'
+#     COMPIZ_CONFIG_PROFILE = 'mate'
+#     PS1 = ('(kivy_venv) \\[\\e]0;\\u@\\h: '
+ '\\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ ')
+#     QT_AUTO_SCREEN_SCALE_FACTOR = '0'
+#     XDG_DATA_DIRS = '/usr/share/mate:/usr/local/share:/usr/share:/var/lib/snapd/desktop'
+#     PATH = '/home/ian/.buildozer/android/platform/apache-ant-1.9.4/bin:/home/ian/kivy_venv/bin:/home/ian/adb-fastboot/platform-tools:/home/ian/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ian/.roswell/bin'
+#     GDMSESSION = 'mate'
+#     DBUS_SESSION_BUS_ADDRESS = 'unix:path=/run/user/1000/bus'
+#     QT_SCALE_FACTOR = '1'
+#     _ = '/home/ian/kivy_venv/bin/buildozer'
+#     OLDPWD = '/home/ian'
+#     PACKAGES_PATH = '/home/ian/.buildozer/android/packages'
+#     ANDROIDSDK = '/home/ian/.buildozer/android/platform/android-sdk'
+#     ANDROIDNDK = '/home/ian/.buildozer/android/platform/android-ndk-r19c'
+#     ANDROIDAPI = '27'
+#     ANDROIDMINAPI = '21'
+# 
+# Buildozer failed to execute the last command
+# The error might be hidden in the log above this error
+# Please read the full log, and search for it before
+# raising an issue with buildozer itself.
+# In case of a bug report, please add a full log with log_level = 2
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy_venv/bin$ pip install Cython --install-option="--no-cython-compile"
+/home/ian/kivy_venv/lib/python3.8/site-packages/pip/_internal/commands/install.py:229: UserWarning: Disabling all use of wheels due to the use of --build-option / --global-option / --install-option.
+  cmdoptions.check_install_build_global(options)
+Collecting Cython
+  Downloading Cython-0.29.24.tar.gz (2.1 MB)
+     |████████████████████████████████| 2.1 MB 13.8 MB/s 
+Skipping wheel build for Cython, due to binaries being disabled for it.
+Installing collected packages: Cython
+    Running setup.py install for Cython ... done
+Successfully installed Cython-0.29.24
+(kivy_venv) ian@ian:~/kivy_venv/bin$ 
+
+
+-rwxrwxr-x 1 ian ian  971 Sep 29 20:25 cygdb
+-rwxrwxr-x 1 ian ian  973 Sep 29 20:25 cython
+-rwxrwxr-x 1 ian ian  979 Sep 29 20:25 cythonize
+
+
+
+
+[INFO]:    -> running bash -c source venv/bin/activate && pip install -U pip
+[INFO]:    Install Cython in case one of the modules needs it to build                                                 
+[INFO]:    -> running bash -c venv/bin/pip install Cython
+           working: Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming ...(and 215 more) Exception in thread background thread for pid 82672:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+
+
+===
+
+  RAN: /usr/bin/bash -c 'venv/bin/pip install Cython'
+
+  STDOUT:
+Ignoring "sys._home = value" override
+
+
+===
+
+
+WARNING: pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/cython/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/cython/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/cython/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/cython/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError("Can't connect to HTTPS URL because the SSL module is not available.")': /simple/cython/
+Could not fetch URL https://pypi.org/simple/cython/: There was a problem confirming the ssl certificate: HTTPSConnectionPool(host='pypi.org', port=443): Max retries exceeded with url: /simple/cython/ (Caused by SSLError("Can't connect to HTTPS URL because the SSL module is not available.")) - skipping
+ERROR: Could not find a version that satisfies the requirement Cython (from versions: none)
+ERROR: No matching distribution found for Cython
+WARNING: pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
+Could not fetch URL https://pypi.org/simple/pip/: There was a problem confirming the ssl certificate: HTTPSConnectionPool(host='pypi.org', port=443): Max retries exceeded with url: /simple/pip/ (Caused by SSLError("Can't connect to HTTPS URL because the SSL module is not available.")) - skipping
+
+
+=====
+https://python-for-android.readthedocs.io/en/latest/troubleshooting/#sslerror-can-t-connect-to-https-url-because-the-ssl-module-is-not-available
+
+SSLError(“Can’t connect to HTTPS URL because the SSL module is not available.”)
+Your hostpython3 was compiled without SSL support. You need to install the SSL development files before rebuilding the hostpython3 recipe. Remember to always clean the build before rebuilding (p4a clean builds, or with buildozer buildozer android clean).
+
+On Ubuntu and derivatives:
+
+apt install libssl-dev
+p4a clean builds # or with: buildozer `buildozer android clean
+
+
+
+===
+
+(kivy_venv) ian@ian:~/kivy$ 
+(kivy_venv) ian@ian:~/kivy$ 
+(kivy_venv) ian@ian:~/kivy$ sudo apt install libssl-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libllvm11 libllvm11:i386 libxdamage1:i386
+Use 'sudo apt autoremove' to remove them.
+Suggested packages:
+  libssl-doc
+The following NEW packages will be installed:
+  libssl-dev
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,584 kB of archives.
+After this operation, 8,008 kB of additional disk space will be used.
+Get:1 http://nz.archive.ubuntu.com/ubuntu focal-updates/main amd64 libssl-dev amd64 1.1.1f-1ubuntu2.8 [1,584 kB]
+Fetched 1,584 kB in 0s (6,421 kB/s)  
+Selecting previously unselected package libssl-dev:amd64.
+(Reading database ... 328574 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_1.1.1f-1ubuntu2.8_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.1.1f-1ubuntu2.8) ...
+Setting up libssl-dev:amd64 (1.1.1f-1ubuntu2.8) ...
+(kivy_venv) ian@ian:~/kivy$ 
+(kivy_venv) ian@ian:~/kivy$ 
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ buildozer android clean
+# Check configuration tokens
+# Ensure build layout
+# Check configuration tokens
+# Read available permissions from api-versions.xml
+# Run '/home/ian/kivy_venv/bin/python -m pythonforandroid.toolchain clean_builds --color=always --storage-dir="/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a" --ndk-api=21'
+# Cwd /home/ian/kivy/.buildozer/android/platform/python-for-android
+# Run '/home/ian/kivy_venv/bin/python -m pythonforandroid.toolchain clean_dists --color=always --storage-dir="/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a" --ndk-api=21'
+# Cwd /home/ian/kivy/.buildozer/android/platform/python-for-android
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+[INFO]:    -> directory context /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/dists/myapp__armeabi-v7a
+WARNING: Received a --sdk argument, but this argument is deprecated and does nothing.
+BUILD FAILURE: No main.py(o) found in your app directory. This
+file must exist to act as the entry point for you app. If your app is
+started by a file with a different name, rename it to main.py or add a
+main.py that loads it.
+
+
+=====
+
+Copied touch tracer to kivy and edited buildozer.spec
+
+=====
+
+
+[INFO]:    # Android package renamed to touchtracer__armeabi-v7a-debug-0.1-.apk
+[DEBUG]:   -> running cp /home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a/dists/touchtracer__armeabi-v7a/build/outputs/apk/debug/touchtracer__armeabi-v7a-debug.apk touchtracer__armeabi-v7a-debug-0.1-.apk
+WARNING: Received a --sdk argument, but this argument is deprecated and does nothing.
+No setup.py/pyproject.toml used, copying full private data into .apk.
+Applying Java source code patches...
+Applying patch: src/patches/SDLActivity.java.patch
+# Android packaging done!
+# APK touchtracer-0.1-armeabi-v7a-debug.apk available in the bin directory
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb devices'
+# Cwd None
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+R31DA0L9T5R	unauthorized
+
+# Deploy on R31DA0L9T5R
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb install -r "/home/ian/kivy/bin/touchtracer-0.1-armeabi-v7a-debug.apk"'
+# Cwd /home/ian/.buildozer/android/platform
+Performing Push Install
+adb: error: failed to get feature set: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+# Command failed: /home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb install -r "/home/ian/kivy/bin/touchtracer-0.1-armeabi-v7a-debug.apk"
+# ENVIRONMENT:
+#     SHELL = '/bin/bash'
+#     SESSION_MANAGER = 'local/ian:@/tmp/.ICE-unix/1530,unix/ian:/tmp/.ICE-unix/1530'
+
+
+=====
+
+
+(kivy_venv) ian@ian:~/kivy$ ls -l
+total 44
+-rw-rw-r-- 1 ian ian    60 Sep 29 18:38 android.txt
+drwxrwxr-x 2 ian ian  4096 Sep 29 21:00 bin
+-rw-rw-r-- 1 ian ian 10589 Sep 29 20:56 buildozer.spec
+-rw-rw-r-- 1 ian ian   576 Sep 29 18:38 icon.png
+-rw-rw-r-- 1 ian ian  5068 Sep 29 18:38 main.py
+-rw-rw-r-- 1 ian ian  1723 Sep 29 18:38 particle.png
+-rw-rw-r-- 1 ian ian   247 Sep 29 18:38 README.txt
+-rw-rw-r-- 1 ian ian   728 Sep 29 18:38 touchtracer.kv
+
+=====
+
+(kivy_venv) ian@ian:~/kivy$ ls -l bin
+total 13076
+-rw-rw-r-- 1 ian ian 13387528 Sep 29 21:00 touchtracer-0.1-armeabi-v7a-debug.apk
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+List of devices attached
+R31DA0L9T5R	unauthorized
+
+Allow USB debuggung turned on on the phone
+ 
+=====
+
+
+(kivy_venv) ian@ian:~/kivy$ buildozer android deploy run
+# Check configuration tokens
+# Ensure build layout
+# Check configuration tokens
+# Read available permissions from api-versions.xml
+# Preparing build
+# Check requirements for android
+# Run 'dpkg --version'
+# Cwd None
+Debian 'dpkg' package management program version 1.19.7 (amd64).
+This is free software; see the GNU General Public License version 2 or
+later for copying conditions. There is NO warranty.
+# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+#  -> found at /home/ian/kivy_venv/bin/cython
+# Search for Java compiler (javac)
+#  -> found at /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+# Search for Java keytool (keytool)
+#  -> found at /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool
+# Install platform
+# Run 'git config --get remote.origin.url'
+# Cwd /home/ian/kivy/.buildozer/android/platform/python-for-android
+https://github.com/kivy/python-for-android.git
+# Run 'git branch -vv'
+# Cwd /home/ian/kivy/.buildozer/android/platform/python-for-android
+* master 4563f3e3 [origin/master] Merge pull request #2488 from misl6/release-2021.09.05
+# Run '/home/ian/kivy_venv/bin/python -m pip install -q  \'appdirs\' \'colorama>=0.3.3\' \'jinja2\' \'six\' \'enum34; python_version<"3.4"\' \'sh>=1.10; sys_platform!="nt"\' \'pep517<0.7.0\' \'toml\''
+# Cwd None
+# Apache ANT found at /home/ian/.buildozer/android/platform/apache-ant-1.9.4
+# Android SDK found at /home/ian/.buildozer/android/platform/android-sdk
+# Recommended android's NDK version by p4a is: 19c
+# Android NDK found at /home/ian/.buildozer/android/platform/android-ndk-r19c
+# Read available permissions from api-versions.xml
+# Check application requirements
+# Check garden requirements
+# Compile platform
+# Run '/home/ian/kivy_venv/bin/python -m pythonforandroid.toolchain create --dist_name=touchtracer --bootstrap=sdl2 --requirements=python3,kivy --arch armeabi-v7a --copy-libs --color=always --storage-dir="/home/ian/kivy/.buildozer/android/platform/build-armeabi-v7a" --ndk-api=21'
+# Cwd /home/ian/kivy/.buildozer/android/platform/python-for-android
+[INFO]:    Will compile for the following archs: armeabi-v7a
+[INFO]:    Found Android API target in $ANDROIDAPI: 27
+[INFO]:    Available Android APIs are (27)
+[INFO]:    Requested API target 27 is available, continuing.
+[INFO]:    Found NDK dir in $ANDROIDNDK: /home/ian/.buildozer/android/platform/android-ndk-r19c
+[INFO]:    Found NDK version 19c
+[INFO]:    Getting NDK API version (i.e. minimum supported API) from user argument
+[INFO]:    ccache is missing, the build will not be optimized in the future.
+[INFO]:    Found the following toolchain versions: ['4.9']
+[INFO]:    Picking the latest gcc toolchain, here 4.9
+[INFO]:    Of the existing distributions, the following meet the given requirements:
+[INFO]:    	touchtracer: min API 21, includes recipes (hostpython3, libffi, openssl, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, six, pyjnius, android, kivy, certifi), built for archs (armeabi-v7a)
+[INFO]:    touchtracer has compatible recipes, using this one
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb devices'
+# Cwd None
+List of devices attached
+R31DA0L9T5R	device
+
+# Deploy on R31DA0L9T5R
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb install -r "/home/ian/kivy/bin/touchtracer-0.1-armeabi-v7a-debug.apk"'
+# Cwd /home/ian/.buildozer/android/platform
+Performing Streamed Install
+Success
+# Application pushed.
+# Run on R31DA0L9T5R
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb shell am start -n org.test.touchtracer/org.kivy.android.PythonActivity -a org.kivy.android.PythonActivity'
+# Cwd /home/ian/.buildozer/android/platform
+Starting: Intent { act=org.kivy.android.PythonActivity cmp=org.test.touchtracer/org.kivy.android.PythonActivity }
+# Application started.
+(kivy_venv) ian@ian:~/kivy$ 
+
+
+=====
+
+Touchtrascer is running on the Phone
+
+Appears as an application. With Icon and Touch Tra....
+
+=====
+
+
+Google Store
+
+Kivy Launcher
+
+Mathieu Virbel
+
+
+Access Files and Media
+Location
+Microphone
+
+
+Updated 20 Mar 2016
+
+V1.9.1.1
+
+
+Built for an older version of Android
+
+Above works OK, but supports python2 and uses old version of Kivy
+
+Uninstalled Kivy Launcher
+
+=====
+
+A updated Kivy Launcher is on github repository
+
+===
+
+https://github.com/kivy/kivy-launcher/issues/7
+
+
+OK... I installed Ubuntu 18.04.02 and followed instructions in Kivy 1.11.1 documentation
+
+Install Kivy on Ubuntu
+Clone this Kivy Launcher repository
+Build and deploy with buildozer
+Launcher runs on Android (great!)
+No applications listed in display
+No major errors I can find in logcat
+
+===
+
+Downloaded zip file of kivy-launcher repository  from:
+
+https://github.com/kivy/kivy-launcher
+
+unzipped to ~/kivy/kivy-launcher-main/
+
+===
+
+ian@ian:~$ cd kivy
+ian@ian:~/kivy$ cd kivy-launcher-main/
+ian@ian:~/kivy/kivy-launcher-main$ ls -l
+total 40
+drwx------ 3 ian ian 4096 Apr 25 03:03 art
+-rw-rw-r-- 1 ian ian 8330 Apr 25 03:03 buildozer.spec
+drwx------ 2 ian ian 4096 Apr 25 03:03 data
+drwx------ 2 ian ian 4096 Apr 25 03:03 launcher
+-rw-rw-r-- 1 ian ian 1061 Apr 25 03:03 LICENSE
+-rw-rw-r-- 1 ian ian 1628 Apr 25 03:03 main.py
+-rw-rw-r-- 1 ian ian 1675 Apr 25 03:03 README.md
+-rw-rw-r-- 1 ian ian   44 Apr 25 03:03 requirements.txt
+
+=====
+
+Edited bildozer.spec as follows:
+
+# Kivy version to use
+# Changed by Ian to use latest kivy
+#osx.kivy_version = 1.9.1
+osx.kivy_version = 2.0.0
+
+=====
+
+
+Command build and deploy to phone
+
+(kivy_venv) ian@ian:~/kivy$ buildozer android clean
+
+(kivy_venv) ian@ian:~/kivy$ buildozer android debug deploy run
+
+
+=====
+
+ian@ian:~$ source kivy_venv/bin/activate
+(kivy_venv) ian@ian:~$ 
+
+(kivy_venv) ian@ian:~$ cd kivy
+(kivy_venv) ian@ian:~/kivy$ ls
+bin  kivy-launcher-main  touchtracer
+(kivy_venv) ian@ian:~/kivy$ cd kivy-launcher-main/
+(kivy_venv) ian@ian:~/kivy/kivy-launcher-main$ 
+
+
+(kivy_venv) ian@ian:~/kivy/kivy-launcher-main$ buildozer android debug deploy run
+# Check configuration tokens
+# Ensure build layout
+# Create directory /home/ian/kivy/kivy-launcher-main/.buildozer
+# Create directory /home/ian/kivy/kivy-launcher-main/bin
+# Create directory /home/ian/kivy/kivy-launcher-main/.buildozer/applibs
+# Create directory /home/ian/kivy/kivy-launcher-main/.buildozer/android/platform
+# Create directory /home/ian/kivy/kivy-launcher-main/.buildozer/android/app
+# Check configuration tokens
+# Read available permissions from api-versions.xml
+# Preparing build
+# Check requirements for android
+# Run 'dpkg --version'
+# Cwd None
+Debian 'dpkg' package management program version 1.19.7 (amd64).
+This is free software; see the GNU General Public License version 2 or
+later for copying conditions. There is NO warranty.
+# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+#  -> found at /home/ian/kivy_venv/bin/cython
+# Search for Java compiler (javac)
+#  -> found at /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+# Search for Java keytool (keytool)
+#  -> found at /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool
+# Install platform
+# Run 'git clone -b master --single-branch https://github.com/kivy/python-for-android.git python-for-android'
+# Cwd /home/ian/kivy/kivy-launcher-main/.buildozer/android/platform
+Cloning into 'python-for-android'...
+# Run '/home/ian/kivy_venv/bin/python -m pip install -q  \'appdirs\' \'colorama>=0.3.3\' 
+
+... goes on for about 10 minutes...
+
+... Fails as Phone has not approved adb connection from the PC...
+
+Applying patch: src/patches/SDLActivity.java.patch
+# Android packaging done!
+# APK launcher-0.1-armeabi-v7a-debug.apk available in the bin directory
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb devices'
+# Cwd None
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+R31DA0L9T5R	unauthorized
+
+# Deploy on R31DA0L9T5R
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb install -r "/home/ian/kivy/kivy-launcher-main/bin/launcher-0.1-armeabi-v7a-debug.apk"'
+# Cwd /home/ian/.buildozer/android/platform
+Performing Push Install
+adb: error: failed to get feature set: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+# Command failed: /home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb install -r "/home/ian/kivy/kivy-launcher-main/bin/launcher-0.1-armeabi-v7a-debug.apk"
+# ENVIRONMENT:
+#     SHELL = '/bin/bash'
+...
+
+... Allow PC to connect and transfer to phone...
+
+
+(kivy_venv) ian@ian:~/kivy/kivy-launcher-main$ 
+(kivy_venv) ian@ian:~/kivy/kivy-launcher-main$ buildozer android deploy run
+# Check configuration tokens
+# Ensure build layout
+# Check configuration tokens
+# Read available permissions from api-versions.xml
+# Preparing build
+# Check requirements for android
+# Run 'dpkg --version'
+# Cwd None
+
+
+List of devices attached
+R31DA0L9T5R	device
+
+# Deploy on R31DA0L9T5R
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb install -r "/home/ian/kivy/kivy-launcher-main/bin/launcher-0.1-armeabi-v7a-debug.apk"'
+# Cwd /home/ian/.buildozer/android/platform
+Performing Streamed Install
+Success
+# Application pushed.
+# Run on R31DA0L9T5R
+# Run '/home/ian/.buildozer/android/platform/android-sdk/platform-tools/adb shell am start -n org.kivy.launcher/org.kivy.android.PythonActivity -a org.kivy.android.PythonActivity'
+# Cwd /home/ian/.buildozer/android/platform
+Starting: Intent { act=org.kivy.android.PythonActivity cmp=org.kivy.launcher/org.kivy.android.PythonActivity }
+# Application started.
+(kivy_venv) ian@ian:~/kivy/kivy-launcher-main$ 
+
+=====
+
+Can now run the kivy launcher app and it finds touchtracer in source code in sdcard/kivy/ on the phone.
+
+Touchtracer runs with kivy 2.0.0
+
+=====
+
+Edited touchtracer.kv and changed the label...
+(Then it changed after loading Kivy Launcher and launching Touch Tracer)
+was...
+            text: 'Kivy %s - Touchtracer' % kivy.__version__
+            
+changed to...            
+            text: 'Kivy %s - Touch~Tracer' % kivy.__version__            
+
+===
+
+#:kivy 1.0
+#:import kivy kivy
+
+<Touchtracer>:
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            source: 'data/images/background.jpg'
+            size: self.size
+
+    BoxLayout:
+        padding: '10dp'
+        spacing: '10dp'
+        size_hint: 1, None
+        pos_hint: {'top': 1}
+        height: '44dp'
+        Image:
+            size_hint: None, None
+            size: '24dp', '24dp'
+            source: 'data/logo/kivy-icon-64.png'
+            mipmap: True
+        Label:
+            height: '24dp'
+            text_size: self.width, None
+            color: (1, 1, 1, .8)
+            text: 'Kivy %s - Touch~Tracer' % kivy.__version__
+            valign: 'middle'
+            
+=====
+
+
